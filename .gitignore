@@ -3,7 +3,7 @@
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
-Assets/AssetStoreTools*
+chain_puzzle/Assets/AssetStoreTools*
 
 # Visual Studio cache directory
 .vs/

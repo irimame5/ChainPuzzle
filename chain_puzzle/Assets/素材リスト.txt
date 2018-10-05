@@ -1,0 +1,2 @@
+﻿公開したくないものはAssetStoreToolsにいれればアップされません．
+使ったらdreiveにmetaごと置いてください

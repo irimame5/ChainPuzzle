@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSceneManager : MonoBehaviour {
+public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
-	// Use this for initialization
+    public List<ChainNode> ChainNodes = new List<ChainNode>();
 	void Start () {
 		
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		
 	}

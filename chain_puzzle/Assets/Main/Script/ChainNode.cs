@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ChainNode : MonoBehaviour {
 
@@ -16,30 +17,33 @@ public class ChainNode : MonoBehaviour {
 	}
 
 
-    public IEnumerator Connect(ChainNode conectNode)
+    public IEnumerator Connect(ChainNode conectNode,GameObject chainObject)
     {
-        const float ConnectingTime = 1f;
-
-
+        float connectingTime = TestSceneManager.Instance.GameParameter.ChainConnectTime;
         float timer = 0f;
-        var chainObject = Instantiate(chain, transform);
-        var spriteRenderer = chainObject.GetComponent<SpriteRenderer>();
+
+        chainObject.transform.position = transform.position;
+        var chainSpriteRenderer = chainObject.GetComponent<SpriteRenderer>();
         float distance = Vector2.Distance(transform.position, conectNode.transform.position);
-        chainObject.transform.up = transform.position - conectNode.transform.position;
+        chainObject.transform.up = (conectNode.transform.position- transform.position).normalized;
          Vector2 size;
-        size = spriteRenderer.size;
+        size = chainSpriteRenderer.size;
         size.y = 0f;
-        spriteRenderer.size = size;
+        chainSpriteRenderer.size = size;
 
         while (true)
         {
             yield return null;
             timer += Time.deltaTime;
-            float rate = timer / ConnectingTime;
+            float rate = timer / connectingTime;
+            float distanceRate = timer / connectingTime * distance;
             if (1 <= rate) { break; }
-            size = spriteRenderer.size;
+            var chainTop = transform.position + chainObject.transform.up * distanceRate;
+            var chainPosition = (chainTop - transform.position) / 2;
+            chainObject.transform.position = transform.position + chainPosition;
+            size = chainSpriteRenderer.size;
             size.y = rate * distance;
-            spriteRenderer.size = size;
+            chainSpriteRenderer.size = size;
         }
     }
 
@@ -47,11 +51,20 @@ public class ChainNode : MonoBehaviour {
     {
         if (TestSceneManager.Instance.ChainNodes.Count == 0)
         {
-            TestSceneManager.Instance.ChainNodes.Add(this);
-            return;
+            TestSceneManager.Instance.AddChainNode(this);
         }
-        var previousChain = TestSceneManager.Instance.ChainNodes[TestSceneManager.Instance.ChainNodes.Count - 1];
-        StartCoroutine(previousChain.Connect(this));
-        TestSceneManager.Instance.ChainNodes.Add(this);
+        else
+        {
+            var previousChainNode = TestSceneManager.Instance.ChainNodes.Last().ChainNode;
+            if (previousChainNode == this)
+            {
+                print("前のノードと同じノードが選択されました");
+                return;
+            }
+
+            var chainObject = Instantiate(chain, transform);
+            StartCoroutine(previousChainNode.Connect(this, chainObject));
+            TestSceneManager.Instance.AddChainNode(this, chainObject);
+        }
     }
 }

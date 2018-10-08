@@ -56,6 +56,7 @@ public class ChainNode : ConnectObject
                 return;
             }
             StartCoroutine(lastChainNode.Connect(this, connectEdge));
+            FireCounter.Instance.RemoveFire();
             TestSceneManager.Instance.AddChainNode(this, connectEdge);
         }
     }

@@ -18,6 +18,8 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     GameObject lastChainNodeImagePrefab;
     [SerializeField]
     ChainEdge[] chainEdges;
+    [SerializeField]
+    GameObject gameClearUI;
 
     GameObject lastChainNodeImage;
     public GameParameter GameParameter
@@ -104,6 +106,7 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     public void GameClear()
     {
         print("GameClear");
+        gameClearUI.SetActive(true);
     }
 
     [ContextMenu("SerchAllEdge")]

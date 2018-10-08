@@ -3,58 +3,96 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ChainNode : MonoBehaviour {
+public class ChainNode : ConnectObject
+{
 
     [SerializeField]
     GameObject chain;
     [SerializeField]
-    ChainNode[] connectedNodes;
+    ChainEdge[] connectedChainEdges;
 
-	void Start () {
+    void Start () {
         
     }
 
     private void OnDrawGizmos()
     {
         const float connectShirtLength = 0.2f;
-        foreach(var node in connectedNodes)
+        foreach(var node in connectedChainEdges)
         {
             var direction = node.transform.position - transform.position;
             var orthogonalVector = Vector3.Cross(direction,transform.forward);
             orthogonalVector.Normalize();
             orthogonalVector *= connectShirtLength;
-            DrawAllow(transform.position + orthogonalVector, direction);
+            Gizmos.color = Color.black;
+            ExtendMethods.DrawAllow(transform.position + orthogonalVector, direction);
         }
     }
 
-    void DrawAllow(Vector3 from,Vector3 direction)
+    public void PointerDown()
     {
-        const float AllowTopLength= 0.3f;
-        const float AllowRadius = 20f;
-        Gizmos.color = Color.black;
+        if (TestSceneManager.Instance.ConnectObjects.Count == 0)
+        {
+            TestSceneManager.Instance.AddChainNode(this);
+        }
+        else
+        {
+            ChainNode lastChainNode = (ChainNode)TestSceneManager.Instance.ConnectObjects.Last();
+            if (lastChainNode == this)
+            {
+                print("前のノードと同じノードが選択されました");
+                return;
+            }
+            var connectEdge = lastChainNode.SearchConnectEdge(this);
+            if (connectEdge==null)
+            {
+                print("前のノードと接続されていないノードが選択されました");
+                return;
+            }
+            bool b = TestSceneManager.Instance.SerchConnectedEdge(connectEdge);
+            if (b)
+            {
+                print("既に接続されているエッジを通ります");
+                return;
+            }
+            StartCoroutine(lastChainNode.Connect(this, connectEdge));
+            TestSceneManager.Instance.AddChainNode(this, connectEdge);
+        }
+    }
 
-        var toPosition = from + direction;
-
-        var tmp = Quaternion.Euler(0, 0, AllowRadius) * -direction;
-        tmp = tmp.normalized * AllowTopLength;
-        Gizmos.DrawRay(toPosition, tmp);
-
-        tmp = Quaternion.Euler(0, 0, -AllowRadius) * -direction;
-        tmp = tmp.normalized * AllowTopLength;
-        Gizmos.DrawRay(toPosition, tmp);
-
-        Gizmos.DrawRay(from, direction);
+    /// <summary>
+    /// 接続してるエッジの先に引数のノードがあるか調べる
+    /// </summary>
+    /// <param name="connectNode">接続されているか調べるノード</param>
+    /// <returns>接続されていればその接続エッジ，なければnull</returns>
+    public ChainEdge SearchConnectEdge(ChainNode connectNode)
+    {
+        foreach(var connectEdge in connectedChainEdges)
+        {
+            var connectingNode = connectEdge.GetConnectedOtherNode(connectNode);
+            if (connectingNode!=null)
+            {
+                return connectEdge;
+            }
+        }
+        return null;
     }
 
     void Update () {
 		
 	}
 
-
-    public IEnumerator Connect(ChainNode conectNode,GameObject chainObject)
+    /// <summary>
+    /// 呼び出し側のノードから引数へ渡したノードへ接続する
+    /// </summary>
+    /// <param name="conectNode">接続先のノード</param>
+    /// <param name="chainObject"></param>
+    /// <returns></returns>
+    public IEnumerator Connect(ChainNode conectNode,ChainEdge chainEdge)
     {
         float connectingTime = TestSceneManager.Instance.GameParameter.ChainConnectTime;
         float timer = 0f;
+        var chainObject = Instantiate(chain, chainEdge.transform);
 
         chainObject.transform.position = transform.position;
         var chainSpriteRenderer = chainObject.GetComponent<SpriteRenderer>();
@@ -79,26 +117,8 @@ public class ChainNode : MonoBehaviour {
             size.y = rate * distance;
             chainSpriteRenderer.size = size;
         }
-    }
 
-    public void PointerDown()
-    {
-        if (TestSceneManager.Instance.ChainNodes.Count == 0)
-        {
-            TestSceneManager.Instance.AddChainNode(this);
-        }
-        else
-        {
-            var previousChainNode = TestSceneManager.Instance.ChainNodes.Last().ChainNode;
-            if (previousChainNode == this)
-            {
-                print("前のノードと同じノードが選択されました");
-                return;
-            }
-
-            var chainObject = Instantiate(chain, transform);
-            StartCoroutine(previousChainNode.Connect(this, chainObject));
-            TestSceneManager.Instance.AddChainNode(this, chainObject);
-        }
+        bool b = TestSceneManager.Instance.CheckAllEdgePass();
+        if (b) { TestSceneManager.Instance.GameClear(); }
     }
 }

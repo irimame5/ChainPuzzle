@@ -7,12 +7,46 @@ public class ChainNode : MonoBehaviour {
 
     [SerializeField]
     GameObject chain;
+    [SerializeField]
+    ChainNode[] connectedNodes;
 
 	void Start () {
-		
-	}
-	
-	void Update () {
+        
+    }
+
+    private void OnDrawGizmos()
+    {
+        const float connectShirtLength = 0.2f;
+        foreach(var node in connectedNodes)
+        {
+            var direction = node.transform.position - transform.position;
+            var orthogonalVector = Vector3.Cross(direction,transform.forward);
+            orthogonalVector.Normalize();
+            orthogonalVector *= connectShirtLength;
+            DrawAllow(transform.position + orthogonalVector, direction);
+        }
+    }
+
+    void DrawAllow(Vector3 from,Vector3 direction)
+    {
+        const float AllowTopLength= 0.3f;
+        const float AllowRadius = 20f;
+        Gizmos.color = Color.black;
+
+        var toPosition = from + direction;
+
+        var tmp = Quaternion.Euler(0, 0, AllowRadius) * -direction;
+        tmp = tmp.normalized * AllowTopLength;
+        Gizmos.DrawRay(toPosition, tmp);
+
+        tmp = Quaternion.Euler(0, 0, -AllowRadius) * -direction;
+        tmp = tmp.normalized * AllowTopLength;
+        Gizmos.DrawRay(toPosition, tmp);
+
+        Gizmos.DrawRay(from, direction);
+    }
+
+    void Update () {
 		
 	}
 

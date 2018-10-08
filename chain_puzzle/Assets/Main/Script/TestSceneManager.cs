@@ -14,6 +14,10 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
     [SerializeField]
     GameParameter gameParameter;
+    [SerializeField]
+    GameObject lastChainNodeImagePrefab;
+
+    GameObject lastChainNodeImage;
     public GameParameter GameParameter
     {
         get { return gameParameter; }
@@ -27,23 +31,30 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     {
         if (chainNodes.Count == 0)
         {
+            lastChainNodeImage = Instantiate(lastChainNodeImagePrefab,transform);
+            lastChainNodeImage.transform.position = chainNode.transform.position;
+
             chainNodes.Add(new ChainData(chainNode));
             return;
         }
         Debug.Assert(chainNodes.Last().Chain == null);
         Debug.Assert(chainObject != null);
         chainNodes.Last().Chain = chainObject;
+        lastChainNodeImage.transform.position = chainNode.transform.position;
         chainNodes.Add(new ChainData(chainNode));
     }
 
     public void RemoveChainNode()
     {
         chainNodes.RemoveAt(chainNodes.Count-1);//最後の接続を外し
+        if (chainNodes.Count == 0)
+        {
+            Destroy(lastChainNodeImage);
+            lastChainNodeImage = null;
+            return;
+        }
+        lastChainNodeImage.transform.position = chainNodes.Last().ChainNode.transform.position;
         Destroy(chainNodes.Last().Chain);//新たな最後のChainを破棄する
         chainNodes.Last().Chain = null;
     }
-	
-	void Update () {
-		
-	}
 }

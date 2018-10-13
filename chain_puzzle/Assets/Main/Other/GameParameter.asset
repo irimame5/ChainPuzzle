@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f52d49b7ad76f1f478173d1033740aa9, type: 3}
   m_Name: GameParameter
   m_EditorClassIdentifier: 
-  ChainConnectTime: 0.5
+  ChainConnectTime: 0.1

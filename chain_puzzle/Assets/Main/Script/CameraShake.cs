@@ -5,8 +5,7 @@ using UnityEngine;
 /// <summary>
 /// なんかうまく揺らせないので保留
 /// </summary>
-public class CameraShake : MonoBehaviour {
-
+public class CameraShake : MonoSingleton<CameraShake> {
     [SerializeField]
     public bool Shake;
     [SerializeField]
@@ -24,7 +23,7 @@ public class CameraShake : MonoBehaviour {
         if (Shake)
         {
             Vector2 normalizedShakeDirection = ShakeDirection.normalized;
-            float random = Random.Range(-ShakeImpulse/2, ShakeImpulse/2);
+            float random = Random.Range(-ShakeImpulse / 2, ShakeImpulse / 2);
             transform.position = firstPosition + (Vector3)normalizedShakeDirection * random*Time.deltaTime;
         }
     }

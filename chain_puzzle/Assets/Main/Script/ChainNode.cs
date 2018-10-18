@@ -96,13 +96,9 @@ public class ChainNode : ConnectObject
         var chainObject = Instantiate(chain, chainEdge.transform);
 
         chainObject.transform.position = transform.position;
-        var chainSpriteRenderer = chainObject.GetComponent<SpriteRenderer>();
+        var chainMaterial = chainObject.GetComponent<MeshRenderer>().material;
         float distance = Vector2.Distance(transform.position, conectNode.transform.position);
-        chainObject.transform.up = (conectNode.transform.position- transform.position).normalized;
-         Vector2 size;
-        size = chainSpriteRenderer.size;
-        size.y = 0f;
-        chainSpriteRenderer.size = size;
+        chainObject.transform.up = (transform.position - conectNode.transform.position).normalized;
 
         while (true)
         {
@@ -111,13 +107,12 @@ public class ChainNode : ConnectObject
             float rate = timer / connectingTime;
             float distanceRate = timer / connectingTime * distance;
             if (1 <= rate) { break; }
-            var chainTop = transform.position + chainObject.transform.up * distanceRate;
-            var chainPosition = (chainTop - transform.position) / 2;
-            chainObject.transform.position = transform.position + chainPosition;
-            size = chainSpriteRenderer.size;
-            size.y = rate * distance;
-            chainSpriteRenderer.size = size;
+            var chainDelta = -chainObject.transform.up * distance * rate; ;
+            chainObject.transform.position = transform.position + chainDelta;
+            chainMaterial.SetFloat("_Extend", distanceRate);
         }
+        chainObject.transform.position = transform.position + (-chainObject.transform.up * distance);
+        chainMaterial.SetFloat("_Extend", distance);
 
         bool b = TestSceneManager.Instance.CheckAllEdgePass();
         if (b) { TestSceneManager.Instance.GameClear(); }

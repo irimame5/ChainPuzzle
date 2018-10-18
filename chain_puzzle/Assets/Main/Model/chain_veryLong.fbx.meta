@@ -4,11 +4,28 @@ ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
+    100002: chain_single3
+    100004: chain_veryLong
+    100006: chain_veryLong1
+    100008: chain_veryLong_Ver2
+    100010: transform1
+    100012: transform2
+    100014: transform3
     400000: //RootNode
+    400002: chain_single3
+    400004: chain_veryLong
+    400006: chain_veryLong1
+    400008: chain_veryLong_Ver2
+    400010: transform1
+    400012: transform2
+    400014: transform3
     2100000: blinn1
     2300000: //RootNode
+    2300002: chain_veryLong_Ver2
     3300000: //RootNode
+    3300002: chain_veryLong_Ver2
     4300000: chain_veryLong
+    4300002: chain_veryLong_Ver2
   externalObjects: {}
   materials:
     importMaterials: 1

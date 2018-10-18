@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 265927344}
   - component: {fileID: 265927343}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: Clear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -513,18 +513,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u30AF\u30EA\u30A2\u30FC"
+  m_text: Clear
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 93770ce555104ff42bb126ae6ff5565d, type: 2}
-  m_sharedMaterial: {fileID: 21119835163178754, guid: 93770ce555104ff42bb126ae6ff5565d,
+  m_fontAsset: {fileID: 11400000, guid: ae78f06e99e731b4ab69e0278df6c747, type: 2}
+  m_sharedMaterial: {fileID: 21597517541126750, guid: ae78f06e99e731b4ab69e0278df6c747,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -541,13 +541,13 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 163
-  m_fontSizeBase: 163
+  m_fontSize: 184.67
+  m_fontSizeBase: 184.67
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_textAlignment: 514
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
@@ -582,7 +582,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: -41.366627, z: -45.963024, w: 0}
   m_textInfo:
     textComponent: {fileID: 265927343}
-    characterCount: 4
+    characterCount: 5
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1286,10 +1286,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u30C4\u30AE\u30CB \u30B9\u30B9\u30E0"
+  m_text: Next
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e7e1d57d3a62f34e9d911cea64c3fd3, type: 2}
-  m_sharedMaterial: {fileID: 21119835163178754, guid: 9e7e1d57d3a62f34e9d911cea64c3fd3,
+  m_fontAsset: {fileID: 11400000, guid: 04c27f63877a4974d8554b324baab115, type: 2}
+  m_sharedMaterial: {fileID: 21597517541126750, guid: 04c27f63877a4974d8554b324baab115,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1355,10 +1355,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 736126567}
-    characterCount: 7
+    characterCount: 4
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 0
+    wordCount: 1
     linkCount: 0
     lineCount: 1
     pageCount: 1
@@ -1567,10 +1567,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u30AD\u30E3\u30F3\u30BB\u30EB"
+  m_text: Cancel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e7e1d57d3a62f34e9d911cea64c3fd3, type: 2}
-  m_sharedMaterial: {fileID: 21119835163178754, guid: 9e7e1d57d3a62f34e9d911cea64c3fd3,
+  m_fontAsset: {fileID: 11400000, guid: 04c27f63877a4974d8554b324baab115, type: 2}
+  m_sharedMaterial: {fileID: 21597517541126750, guid: 04c27f63877a4974d8554b324baab115,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1636,7 +1636,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 916767218}
-    characterCount: 5
+    characterCount: 6
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -1776,7 +1776,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998634695}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: -0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2345,10 +2345,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: "\u30D0\u30C3\u30AF"
+  m_text: Back
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9e7e1d57d3a62f34e9d911cea64c3fd3, type: 2}
-  m_sharedMaterial: {fileID: 21119835163178754, guid: 9e7e1d57d3a62f34e9d911cea64c3fd3,
+  m_fontAsset: {fileID: 11400000, guid: 04c27f63877a4974d8554b324baab115, type: 2}
+  m_sharedMaterial: {fileID: 21597517541126750, guid: 04c27f63877a4974d8554b324baab115,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -2414,7 +2414,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1430235608}
-    characterCount: 3
+    characterCount: 4
     spriteCount: 0
     spaceCount: 0
     wordCount: 1
@@ -2489,52 +2489,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1502797928
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.0367501
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.8149548
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: facf386b01c3d564fb7cf25edb178922, type: 2}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 698d25e91f6e2f44ab7a4df3efdf5aa2, type: 3}
   m_IsPrefabParent: 0
 --- !u!4 &1523840704 stripped
 Transform:
@@ -2913,6 +2867,11 @@ Prefab:
       propertyPath: connectedChainEdges.Array.data[1]
       value: 
       objectReference: {fileID: 275704648}
+    - target: {fileID: 212569238111119442, guid: afa36a5b628b9f5488aaa557080316cd,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afa36a5b628b9f5488aaa557080316cd, type: 2}
   m_IsPrefabParent: 0

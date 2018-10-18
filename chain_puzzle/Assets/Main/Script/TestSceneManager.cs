@@ -45,17 +45,20 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
     public void AddChainNode(ChainNode chainNode,ChainEdge chainEdge=null)
     {
+        const float ChainNodeImageZ = -0.6f;//モデルに隠れないための調整分;
+
+        var pos = chainNode.transform.position;
+        pos.z = ChainNodeImageZ;
         if (connectObjects.Count == 0)
         {
             lastChainNodeImage = Instantiate(lastChainNodeImagePrefab,transform);
-            lastChainNodeImage.transform.position = chainNode.transform.position;
-
+            lastChainNodeImage.transform.position = pos;
             connectObjects.Add(chainNode);
             return;
         }
         Debug.Assert(chainEdge != null);
         connectObjects.Add(chainEdge);
-        lastChainNodeImage.transform.position = chainNode.transform.position;
+        lastChainNodeImage.transform.position = pos;
         connectObjects.Add(chainNode);
     }
 

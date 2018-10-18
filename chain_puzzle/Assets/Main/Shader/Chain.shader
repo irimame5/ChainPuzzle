@@ -38,7 +38,7 @@
 		void vert(inout appdata_full v, out Input o)
 		{
 			UNITY_INITIALIZE_OUTPUT(Input, o);
-			float y = clamp(v.vertex.y, -_Extend, _Extend);
+			float y = clamp(v.vertex.y, 0.0, _Extend);
 			v.vertex.xyz = float3(v.vertex.x, y, v.vertex.z);
 		}
 

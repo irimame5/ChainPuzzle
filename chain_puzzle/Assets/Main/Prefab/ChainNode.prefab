@@ -88,7 +88,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 7f2079d30499f5344852c9305b72adba, type: 3}
+  - {fileID: 2100000, guid: 018f7c90cb7473c49973310520eae6ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20490744001b8f84bac994a275f4ca04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chain: {fileID: 1031268035247428, guid: 6c60f37889c9efb4090208d1d657c5d9, type: 2}
+  chain: {fileID: 1702102690668750, guid: be885db15e6ec0043886021a566731b0, type: 2}
   connectedChainEdges:
   - {fileID: 0}
   - {fileID: 0}

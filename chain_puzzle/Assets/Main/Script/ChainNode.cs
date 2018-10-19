@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+[System.Flags]
+public enum ChainNodeAttribute
+{
+    Attack = 1 << 0,
+    Magic = 1 << 1,  
+    Guard = 1 << 2,
+    Recovery = 1 << 3,
+}
+
 public class ChainNode : ConnectObject
 {
 
@@ -10,6 +19,12 @@ public class ChainNode : ConnectObject
     GameObject chain;
     [SerializeField]
     ChainEdge[] connectedChainEdges;
+    [SerializeField,EnumFlags]
+    ChainNodeAttribute nodeAttribute;
+    public ChainNodeAttribute NodeAttribute
+    {
+        get { return nodeAttribute; }
+    }
 
     void Start () {
         
@@ -115,6 +130,7 @@ public class ChainNode : ConnectObject
         chainMaterial.SetFloat("_Extend", distance);
 
         bool b = TestSceneManager.Instance.CheckAllEdgePass();
-        if (b) { TestSceneManager.Instance.GameClear(); }
+        if (b) { TestSceneManager.Instance.CahinAllConect(); }
     }
 }
+

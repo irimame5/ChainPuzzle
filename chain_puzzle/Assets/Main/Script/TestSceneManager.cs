@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using UnityEngine;
 
 public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
-    [SerializeField]
+    [SerializeField, Disable]
     List<ConnectObject> connectObjects = new List<ConnectObject>();
     public List<ConnectObject> ConnectObjects
     {
@@ -20,6 +22,8 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     ChainEdge[] chainEdges;
     [SerializeField]
     GameObject gameClearUI;
+    [SerializeField]
+    Enemy enemy;
 
     GameObject lastChainNodeImage;
     public GameParameter GameParameter
@@ -28,8 +32,8 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     }
 
 	void Start () {
-		
-	}
+
+    }
 
     public bool SerchConnectedEdge(ChainEdge chainEdge)
     {
@@ -106,10 +110,34 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
         return false;
     }
 
-    public void GameClear()
+    public void CahinAllConect()
     {
-        print("GameClear");
-        gameClearUI.SetActive(true);
+        var cahiNodeAttributes = 
+            connectObjects.Where(x => x is ChainNode)
+            .Select(x => x.GetComponent<ChainNode>()
+            .NodeAttribute).ToArray();
+
+        int damageSum=0;
+        int magicSum=0;
+        int guardSum = 0;
+        int recoverySum = 0;
+        var b = cahiNodeAttributes[0] & ChainNodeAttribute.Attack;
+
+        //num1にnum2が含まれているか
+        Func< ChainNodeAttribute, ChainNodeAttribute, bool> attributeCompare
+            = (ChainNodeAttribute num1, ChainNodeAttribute num2) =>
+          {
+              var result = (num1 & num2)==num2;
+              return result;
+          };
+
+        damageSum = cahiNodeAttributes.Where(x => attributeCompare(x, ChainNodeAttribute.Attack)).Count();
+        magicSum = cahiNodeAttributes.Where(x => attributeCompare(x, ChainNodeAttribute.Magic)).Count();
+        guardSum = cahiNodeAttributes.Where(x => attributeCompare(x, ChainNodeAttribute.Guard)).Count();
+        recoverySum = cahiNodeAttributes.Where(x => attributeCompare(x, ChainNodeAttribute.Recovery)).Count();
+
+        int damage = (int)(damageSum * gameParameter.DamageAttributeRate);
+        enemy.Damage(damage);
     }
 
     [ContextMenu("SerchAllEdge")]

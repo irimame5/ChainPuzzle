@@ -68,15 +68,15 @@ public sealed class SceneNameAttributeDrawer : PropertyDrawer
         if (property.propertyType == SerializedPropertyType.String)
         {
             int currentIndex = Array.IndexOf(sceneNames, property.stringValue);
-
+            
             var nextIndex = EditorGUI.Popup(position,label.text , currentIndex, sceneNames);
+            Debug.Log(nextIndex);
             if (nextIndex == -1)
             {
                 property.stringValue = "";
-            }else
-            {
-                property.stringValue = sceneNames[nextIndex];
+                return;
             }
+            property.stringValue = sceneNames[nextIndex];
         }
         else
         {

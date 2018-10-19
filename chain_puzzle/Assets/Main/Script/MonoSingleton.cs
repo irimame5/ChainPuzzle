@@ -8,7 +8,9 @@ public abstract class MonoSingleton<T> : MonoBehaviour
     {
         if (_Instance != null)
         {
-            Debug.LogError(typeof(T) + "was instantiated");
+            print(typeof(T) + "was instantiated");
+            Destroy(gameObject);
+            return;
         }
         Instance = (T)this;
         SubAwake();
@@ -21,7 +23,10 @@ public abstract class MonoSingleton<T> : MonoBehaviour
     void OnDestroy()
     {
         SubOnDestroy();
-        Instance = null;
+        if (Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     protected virtual void SubOnDestroy()

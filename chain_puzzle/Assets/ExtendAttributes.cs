@@ -19,6 +19,7 @@ public sealed class DisableAttribute : PropertyAttribute
 [AttributeUsage(AttributeTargets.Field)]
 public sealed class SceneNameAttribute : PropertyAttribute
 {
+
 }
 
 #if UNITY_EDITOR
@@ -66,7 +67,16 @@ public sealed class SceneNameAttributeDrawer : PropertyDrawer
 
         if (property.propertyType == SerializedPropertyType.String)
         {
-            EditorGUI.Popup(position,label.text ,0, sceneNames);
+            int currentIndex = Array.IndexOf(sceneNames, property.stringValue);
+
+            var nextIndex = EditorGUI.Popup(position,label.text , currentIndex, sceneNames);
+            if (nextIndex == -1)
+            {
+                property.stringValue = "";
+            }else
+            {
+                property.stringValue = sceneNames[nextIndex];
+            }
         }
         else
         {

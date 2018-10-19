@@ -9,45 +9,42 @@ public class SoundManager : MonoSingleton<SoundManager> {
     [SerializeField]
     bool muteBgm;
 
-    const int AudioSourcesNum = 3;
-    AudioSource[] audioSourcies = new AudioSource[AudioSourcesNum];
-	void Start () {
+    const int BgmAudioSourcesNum = 3;
+    AudioSource[] BgmAudioSourcies = new AudioSource[BgmAudioSourcesNum];
+    AudioSource SeAudioSourcies;
+    protected override void SubAwake () {
         DontDestroyOnLoad(gameObject);
-        for(int i=0;i<AudioSourcesNum;i++)
+        for(int i=0;i<BgmAudioSourcesNum;i++)
         {
-            audioSourcies[i] = (AudioSource)gameObject.AddComponent(typeof(AudioSource));
+            BgmAudioSourcies[i] = (AudioSource)gameObject.AddComponent(typeof(AudioSource));
         }
-        if (muteBgm)
-        {
-            foreach (var audioSource in audioSourcies)
-            {
-                audioSource.Stop();
-            }
-        }
-    }
-    void Update()
-    {
-
+        SeAudioSourcies = (AudioSource)gameObject.AddComponent(typeof(AudioSource));
     }
 
     public void PlaySE(AudioClip clip)
     {
         if (muteSe) { return; }
-        audioSourcies[0].PlayOneShot(clip);
+        SeAudioSourcies.PlayOneShot(clip);
     }
 
-    public void PlayBGM(AudioClip clip)
+    /// <summary>
+    /// 今流れているのに重ねてbgm再生
+    /// </summary>
+    /// <param name="clip"></param>
+    public void PlayBgmAdd(AudioClip clip)
     {
         if (muteBgm) { return; }
+        if (IsPlayingBGM(clip)) { return; }
+
         int count = 1;
         while (true)
         {
-            if (audioSourcies.Length <= count)
+            if (BgmAudioSourcies.Length <= count)
             {
                 Debug.LogError("AudioSourceの数以上のBGMを再生しようとしています");
                 return;
             }
-            if (!audioSourcies[count].isPlaying)
+            if (!BgmAudioSourcies[count].isPlaying)
             {
                 break;
             }else
@@ -55,14 +52,27 @@ public class SoundManager : MonoSingleton<SoundManager> {
                 count++;
             }
         }
+        BgmAudioSourcies[count].clip = clip;
+        BgmAudioSourcies[count].Play();
+    }
 
-        audioSourcies[count].clip = clip;
-        audioSourcies[count].Play();
+    /// <summary>
+    /// 今流れているのは止めてbgm再生
+    /// </summary>
+    /// <param name="clip"></param>
+    public void PlayBgmSingle(AudioClip clip)
+    {
+        if (muteBgm) { return; }
+        if (IsPlayingBGM(clip)) { return; }
+
+        StopAllBGM();
+        BgmAudioSourcies[0].clip = clip;
+        BgmAudioSourcies[0].Play();
     }
 
     public bool IsPlayingBGM(AudioClip clip)
     {
-        foreach(var audioSource in audioSourcies)
+        foreach(var audioSource in BgmAudioSourcies)
         {
             if (audioSource.clip == clip)
             {
@@ -75,20 +85,19 @@ public class SoundManager : MonoSingleton<SoundManager> {
     public List<AudioClip> GetPlayingList()
     {
         var clips = new List<AudioClip>();
-        foreach (var audioSource in audioSourcies)
+        foreach (var audioSource in BgmAudioSourcies)
         {
             if (audioSource.clip)
             {
                 clips.Add(audioSource.clip);
             }
         }
-
         return clips;
     }
 
     public void StopBGM(AudioClip clip)
     {
-        foreach(var audioSource in audioSourcies)
+        foreach(var audioSource in BgmAudioSourcies)
         {
             if (audioSource.clip == clip)
             {
@@ -101,7 +110,7 @@ public class SoundManager : MonoSingleton<SoundManager> {
 
     public void StopAllBGM()
     {
-        foreach (var audioSource in audioSourcies)
+        foreach (var audioSource in BgmAudioSourcies)
         {
             if (audioSource.isPlaying)
             {
@@ -115,7 +124,7 @@ public class SoundManager : MonoSingleton<SoundManager> {
     public void FadeInBGM(AudioClip clip,Action action=null,float fadeTime= DefaultFadeTime)
     {
         if (muteBgm) { return; }
-        foreach (var audioSource in audioSourcies)
+        foreach (var audioSource in BgmAudioSourcies)
         {
             if (!audioSource.isPlaying)
             {
@@ -127,7 +136,7 @@ public class SoundManager : MonoSingleton<SoundManager> {
     }
     public void FadeOutBGM(AudioClip clip, Action action=null, float fadeTime = DefaultFadeTime)
     {
-        foreach (var audioSource in audioSourcies)
+        foreach (var audioSource in BgmAudioSourcies)
         {
             if (audioSource.clip == clip)
             {

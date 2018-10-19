@@ -769,6 +769,7 @@ MonoBehaviour:
   - {fileID: 1083241664}
   gameClearUI: {fileID: 1719997740}
   enemy: {fileID: 1779973798}
+  mainBgm: {fileID: 8300000, guid: 64fc0f226e298ee4a85441a4e7bb1ef5, type: 3}
 --- !u!4 &416547476
 Transform:
   m_ObjectHideFlags: 0
@@ -3024,7 +3025,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 91.2, y: 91.2}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1980891773
@@ -3039,7 +3040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb929ee6b57d24ebc002e0463a4329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Title
+  sceneName: StageSelect
 --- !u!114 &1980891774
 MonoBehaviour:
   m_ObjectHideFlags: 0

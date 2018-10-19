@@ -24,6 +24,8 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     GameObject gameClearUI;
     [SerializeField]
     Enemy enemy;
+    [SerializeField]
+    AudioClip mainBgm;
 
     GameObject lastChainNodeImage;
     public GameParameter GameParameter
@@ -32,7 +34,7 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     }
 
 	void Start () {
-
+        SoundManager.Instance.PlayBgmSingle(mainBgm);
     }
 
     public bool SerchConnectedEdge(ChainEdge chainEdge)

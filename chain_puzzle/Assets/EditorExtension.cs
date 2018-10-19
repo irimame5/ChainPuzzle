@@ -1,10 +1,49 @@
 ﻿using System;
 using UnityEngine;
 using System.Linq;
-
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.SceneManagement;
 #endif 
+
+public static class EditorExtension
+{
+#if UNITY_EDITOR
+
+    [MenuItem("MyGame/NextScene #RIGHT")]
+    public static void LoadNextScene()
+    {
+        int currentSceneIndex = EditorSceneManager.GetActiveScene().buildIndex;
+        var scenes = EditorBuildSettings.scenes;
+        int nextSceneIndex;
+        if (scenes.Length <= currentSceneIndex + 1)
+        {
+            nextSceneIndex = 0;
+        }else
+        {
+            nextSceneIndex = currentSceneIndex + 1;
+        }
+        EditorSceneManager.OpenScene(scenes[nextSceneIndex].path);
+    }
+    [MenuItem("MyGame/BackScene #LEFT")]
+    public static void LoadBackScene()
+    {
+        int currentSceneIndex = EditorSceneManager.GetActiveScene().buildIndex;
+        var scenes = EditorBuildSettings.scenes;
+        int nextSceneIndex;
+        if (currentSceneIndex - 1 < 0)
+        {
+            nextSceneIndex = scenes.Length - 1;
+        }
+        else
+        {
+            nextSceneIndex = currentSceneIndex - 1;
+        }
+        EditorSceneManager.OpenScene(scenes[nextSceneIndex].path);
+    }
+
+#endif 
+}
 
 [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field)]
 public sealed class EnumFlagsAttribute : PropertyAttribute
@@ -70,7 +109,6 @@ public sealed class SceneNameAttributeDrawer : PropertyDrawer
             int currentIndex = Array.IndexOf(sceneNames, property.stringValue);
             
             var nextIndex = EditorGUI.Popup(position,label.text , currentIndex, sceneNames);
-            Debug.Log(nextIndex);
             if (nextIndex == -1)
             {
                 property.stringValue = "";

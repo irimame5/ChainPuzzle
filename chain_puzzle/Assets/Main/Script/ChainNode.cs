@@ -19,6 +19,10 @@ public class ChainNode : ConnectObject
     GameObject chain;
     [SerializeField]
     ChainEdge[] connectedChainEdges;
+    [SerializeField]
+    AudioClip connectChainSound;
+    [SerializeField]
+    AudioClip chainExtendSound;
     [SerializeField,EnumFlags]
     ChainNodeAttribute nodeAttribute;
     public ChainNodeAttribute NodeAttribute
@@ -115,6 +119,7 @@ public class ChainNode : ConnectObject
         float distance = Vector2.Distance(transform.position, conectNode.transform.position);
         chainObject.transform.up = (transform.position - conectNode.transform.position).normalized;
 
+        SoundManager.Instance.PlaySE(chainExtendSound);
         while (true)
         {
             yield return null;
@@ -128,6 +133,7 @@ public class ChainNode : ConnectObject
         }
         chainObject.transform.position = transform.position + (-chainObject.transform.up * distance);
         chainMaterial.SetFloat("_Extend", distance);
+        SoundManager.Instance.PlaySE(connectChainSound);
 
         bool b = TestSceneManager.Instance.CheckAllEdgePass();
         if (b) { TestSceneManager.Instance.CahinAllConect(); }

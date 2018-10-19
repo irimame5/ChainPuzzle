@@ -176,6 +176,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  connectChainSound: {fileID: 8300000, guid: e96a16c91e85559449c8cab845fef2ef, type: 3}
+  chainExtendSound: {fileID: 8300000, guid: cad8264e5caaf2f469f83acad5471fb2, type: 3}
+  nodeAttribute: 0
 --- !u!212 &212569238111119442
 SpriteRenderer:
   m_ObjectHideFlags: 1

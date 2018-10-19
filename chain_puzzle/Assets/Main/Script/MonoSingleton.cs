@@ -18,6 +18,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour
 
     protected virtual void SubAwake()
     {
+
     }
 
     void OnDestroy()

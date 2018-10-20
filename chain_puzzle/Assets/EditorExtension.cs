@@ -71,6 +71,8 @@ public static class EditorExtension
     [MenuItem("MyGame/NextScene #RIGHT")]
     public static void LoadNextScene()
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) { return; }//シーンが保存できなきゃやめる
+
         int currentSceneIndex = EditorSceneManager.GetActiveScene().buildIndex;
         var scenes = EditorBuildSettings.scenes;
         int nextSceneIndex;
@@ -86,6 +88,8 @@ public static class EditorExtension
     [MenuItem("MyGame/BackScene #LEFT")]
     public static void LoadBackScene()
     {
+        if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) { return; }//シーンが保存できなきゃやめる
+
         int currentSceneIndex = EditorSceneManager.GetActiveScene().buildIndex;
         var scenes = EditorBuildSettings.scenes;
         int nextSceneIndex;

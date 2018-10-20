@@ -1700,6 +1700,12 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: damageTextEffect
+      value: 
+      objectReference: {fileID: 114727916012046756, guid: 6fbe363a420b58f4ca36533d0dce4968,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd213873765d1944da80be26fa0b8cf6, type: 2}
   m_IsPrefabParent: 0

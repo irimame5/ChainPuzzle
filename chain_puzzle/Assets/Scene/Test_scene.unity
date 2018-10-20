@@ -774,7 +774,7 @@ MonoBehaviour:
   gameClearUI: {fileID: 1719997740}
   enemy: {fileID: 1779973798}
   mainBgm: {fileID: 8300000, guid: 64fc0f226e298ee4a85441a4e7bb1ef5, type: 3}
-  playerHp: 0
+  playerHp: 100
   hpBar: {fileID: 2109190868}
   damageTextEffect: {fileID: 0}
 --- !u!4 &416547476

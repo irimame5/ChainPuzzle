@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChainEdge : ConnectObject
 {
-
+    [Disable]
     public bool IsPassed;
     [SerializeField]
     ChainNode[] connectedChainNodes = new ChainNode[2];
@@ -50,7 +50,7 @@ public class ChainEdge : ConnectObject
             orthogonalVector.Normalize();
             orthogonalVector *= connectShirtLength;
             Gizmos.color = Color.black;
-            ExtendMethods.DrawAllow(transform.position + orthogonalVector, direction);
+            EditorExtension.DrawAllow(transform.position + orthogonalVector, direction);
         }
     }
 

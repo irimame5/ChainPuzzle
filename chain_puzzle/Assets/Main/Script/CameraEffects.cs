@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+/// <summary>
+/// なんかうまく揺らせないので保留
+/// </summary>
+public class CameraEffects : MonoSingleton<CameraEffects> {
+
+    Vector3 firstPosition;
+	void Start () {
+        firstPosition = transform.position;
+	}
+
+    /// <summary>
+    /// 引数があるとContextMenuで呼べないのでこれで呼ぶ
+    /// </summary>
+    [ContextMenu("ShakeTest")]
+    void ShakeTest()
+    {
+        Shake();
+    }
+
+    public void Shake(float shakeTime = 0.3f)
+    {
+        transform.DOShakePosition(shakeTime);
+    }
+}

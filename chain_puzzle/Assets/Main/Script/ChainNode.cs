@@ -18,6 +18,8 @@ public class ChainNode : ConnectObject
     [SerializeField]
     GameObject chain;
     [SerializeField]
+    GameObject ringEffect;
+    [SerializeField]
     ChainEdge[] connectedChainEdges;
     [SerializeField]
     AudioClip connectChainSound;
@@ -31,7 +33,7 @@ public class ChainNode : ConnectObject
     }
 
     void Start () {
-        
+
     }
 
     private void OnDrawGizmos()
@@ -44,7 +46,7 @@ public class ChainNode : ConnectObject
             orthogonalVector.Normalize();
             orthogonalVector *= connectShirtLength;
             Gizmos.color = Color.black;
-            ExtendMethods.DrawAllow(transform.position + orthogonalVector, direction);
+            EditorExtension.DrawAllow(transform.position + orthogonalVector, direction);
         }
     }
 
@@ -106,7 +108,7 @@ public class ChainNode : ConnectObject
     /// 呼び出し側のノードから引数へ渡したノードへ接続する
     /// </summary>
     /// <param name="conectNode">接続先のノード</param>
-    /// <param name="chainObject"></param>
+    /// <param name="chainEdge">この子階層に生成する</param>
     /// <returns></returns>
     public IEnumerator Connect(ChainNode conectNode,ChainEdge chainEdge)
     {
@@ -127,13 +129,17 @@ public class ChainNode : ConnectObject
             float rate = timer / connectingTime;
             float distanceRate = timer / connectingTime * distance;
             if (1 <= rate) { break; }
-            var chainDelta = -chainObject.transform.up * distance * rate; ;
+            var chainDelta = -chainObject.transform.up * distance * rate;
             chainObject.transform.position = transform.position + chainDelta;
             chainMaterial.SetFloat("_Extend", distanceRate);
         }
         chainObject.transform.position = transform.position + (-chainObject.transform.up * distance);
         chainMaterial.SetFloat("_Extend", distance);
+
+        //ここで接続完了
         SoundManager.Instance.PlaySE(connectChainSound);
+        CameraEffects.Instance.Shake();
+        Instantiate(ringEffect, conectNode.transform.position, ringEffect.transform.rotation);
 
         bool b = TestSceneManager.Instance.CheckAllEdgePass();
         if (b) { TestSceneManager.Instance.CahinAllConect(); }

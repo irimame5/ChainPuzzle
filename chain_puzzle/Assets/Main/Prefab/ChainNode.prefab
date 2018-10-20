@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chain: {fileID: 1702102690668750, guid: be885db15e6ec0043886021a566731b0, type: 2}
+  ringEffect: {fileID: 1893569134965142, guid: 784fcffab8df6f440afb48a02876c07c, type: 2}
   connectedChainEdges:
   - {fileID: 0}
   - {fileID: 0}

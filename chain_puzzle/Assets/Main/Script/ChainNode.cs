@@ -52,13 +52,13 @@ public class ChainNode : ConnectObject
 
     public void PointerDown()
     {
-        if (TestSceneManager.Instance.ConnectObjects.Count == 0)
+        if (MainGameSceneManager.Instance.ConnectObjects.Count == 0)
         {
-            TestSceneManager.Instance.AddChainNode(this);
+            MainGameSceneManager.Instance.AddChainNode(this);
         }
         else
         {
-            ChainNode lastChainNode = (ChainNode)TestSceneManager.Instance.ConnectObjects.Last();
+            ChainNode lastChainNode = (ChainNode)MainGameSceneManager.Instance.ConnectObjects.Last();
             if (lastChainNode == this)
             {
                 print("前のノードと同じノードが選択されました");
@@ -70,7 +70,7 @@ public class ChainNode : ConnectObject
                 print("前のノードと接続されていないノードが選択されました");
                 return;
             }
-            bool b = TestSceneManager.Instance.SerchConnectedEdge(connectEdge);
+            bool b = MainGameSceneManager.Instance.SerchConnectedEdge(connectEdge);
             if (b)
             {
                 print("既に接続されているエッジを通ります");
@@ -78,7 +78,7 @@ public class ChainNode : ConnectObject
             }
             StartCoroutine(lastChainNode.Connect(this, connectEdge));
             FireCounter.Instance.RemoveFire();
-            TestSceneManager.Instance.AddChainNode(this, connectEdge);
+            MainGameSceneManager.Instance.AddChainNode(this, connectEdge);
         }
     }
 
@@ -112,7 +112,7 @@ public class ChainNode : ConnectObject
     /// <returns></returns>
     public IEnumerator Connect(ChainNode conectNode,ChainEdge chainEdge)
     {
-        float connectingTime = TestSceneManager.Instance.GameParameter.ChainConnectTime;
+        float connectingTime = MainGameSceneManager.Instance.GameParameter.ChainConnectTime;
         float timer = 0f;
         var chainObject = Instantiate(chain, chainEdge.transform);
 
@@ -141,8 +141,8 @@ public class ChainNode : ConnectObject
         CameraEffects.Instance.Shake();
         Instantiate(ringEffect, conectNode.transform.position, ringEffect.transform.rotation);
 
-        bool b = TestSceneManager.Instance.CheckAllEdgePass();
-        if (b) { TestSceneManager.Instance.CahinAllConect(); }
+        bool b = MainGameSceneManager.Instance.CheckAllEdgePass();
+        if (b) { MainGameSceneManager.Instance.CahinAllConect(); }
     }
 }
 

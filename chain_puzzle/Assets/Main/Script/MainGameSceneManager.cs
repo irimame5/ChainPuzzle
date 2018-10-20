@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestSceneManager : MonoSingleton<TestSceneManager> {
+public class MainGameSceneManager : MonoSingleton<MainGameSceneManager> {
 
     [SerializeField, Disable]
     List<ConnectObject> connectObjects = new List<ConnectObject>();

@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: debb929ee6b57d24ebc002e0463a4329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Test_scene
+  sceneName: MainGame
 --- !u!222 &222159077305310238
 CanvasRenderer:
   m_ObjectHideFlags: 1

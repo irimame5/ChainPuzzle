@@ -775,7 +775,7 @@ MonoBehaviour:
   enemy: {fileID: 1779973798}
   mainBgm: {fileID: 8300000, guid: 64fc0f226e298ee4a85441a4e7bb1ef5, type: 3}
   playerHp: 0
-  hpBar: {fileID: 0}
+  hpBar: {fileID: 2109190868}
   damageTextEffect: {fileID: 0}
 --- !u!4 &416547476
 Transform:
@@ -3591,3 +3591,9 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00c170ec66644fe4ab6f8441638d6dc6, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2109190868 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114497323347639092, guid: 00c170ec66644fe4ab6f8441638d6dc6,
+    type: 2}
+  m_PrefabInternal: {fileID: 2109190867}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}

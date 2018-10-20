@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114219126219562940}
   - component: {fileID: 114200391787323332}
   - component: {fileID: 212569238111119442}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ChainNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 4453173954029776}
   - component: {fileID: 33941191819127044}
   - component: {fileID: 23610034773747136}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: chain_prop
   m_TagString: Untagged
   m_Icon: {fileID: 0}

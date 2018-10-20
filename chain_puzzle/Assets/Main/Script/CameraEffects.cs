@@ -8,9 +8,7 @@ using DG.Tweening;
 /// </summary>
 public class CameraEffects : MonoSingleton<CameraEffects> {
 
-    Vector3 firstPosition;
 	void Start () {
-        firstPosition = transform.position;
 	}
 
     /// <summary>

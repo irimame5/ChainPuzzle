@@ -19,7 +19,7 @@ public class FireCounter : MonoSingleton<FireCounter> {
 
     public void RemoveFire()
     {
-        if (count == -1) { return; }
+        if (count == 0) { return; }
         fireImages[count-1].enabled = false;
         count--;
     }

@@ -52,13 +52,13 @@ public class ChainNode : ConnectObject
 
     public void PointerDown()
     {
-        if (MainGameSceneManager.Instance.ConnectObjects.Count == 0)
+        if (SequanceManager.Instance.ConnectObjects.Count == 0)
         {
-            MainGameSceneManager.Instance.AddChainNode(this);
+            SequanceManager.Instance.AddChainNode(this);
         }
         else
         {
-            ChainNode lastChainNode = (ChainNode)MainGameSceneManager.Instance.ConnectObjects.Last();
+            ChainNode lastChainNode = (ChainNode)SequanceManager.Instance.ConnectObjects.Last();
             if (lastChainNode == this)
             {
                 print("前のノードと同じノードが選択されました");
@@ -70,15 +70,14 @@ public class ChainNode : ConnectObject
                 print("前のノードと接続されていないノードが選択されました");
                 return;
             }
-            bool b = MainGameSceneManager.Instance.SerchConnectedEdge(connectEdge);
+            bool b = SequanceManager.Instance.SerchConnectedEdge(connectEdge);
             if (b)
             {
                 print("既に接続されているエッジを通ります");
                 return;
             }
             StartCoroutine(lastChainNode.Connect(this, connectEdge));
-            FireCounter.Instance.RemoveFire();
-            MainGameSceneManager.Instance.AddChainNode(this, connectEdge);
+            SequanceManager.Instance.AddChainNode(this, connectEdge);
         }
     }
 
@@ -141,8 +140,8 @@ public class ChainNode : ConnectObject
         CameraEffects.Instance.Shake();
         Instantiate(ringEffect, conectNode.transform.position, ringEffect.transform.rotation);
 
-        bool b = MainGameSceneManager.Instance.CheckAllEdgePass();
-        if (b) { MainGameSceneManager.Instance.CahinAllConect(); }
+        bool b = SequanceManager.Instance.CheckAllEdgePass();
+        if (b) { SequanceManager.Instance.CahinAllConect(); }
     }
 }
 

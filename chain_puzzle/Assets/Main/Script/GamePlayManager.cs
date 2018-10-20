@@ -16,6 +16,9 @@ public class GamePlayManager : MonoSingleton<GamePlayManager>
 
 	void Update ()
 	{
-		
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
 	}
 }

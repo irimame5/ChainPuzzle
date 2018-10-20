@@ -18,9 +18,9 @@ public class DamageTextEffect : MonoBehaviour
 
     public void Initialize(Vector3 position,int value)
     {
-        //Instantiateされ,Start前にすぐ呼ばれるのでここで GetComp
-        var text = GetComponent<TextMeshPro>();
         transform.position = position;
+
+        //Instantiateされ,Start前にすぐ呼ばれるのでここで GetComp
         GetComponent<TextMeshPro>().text = preText + value.ToString() + postText;
         transform.DOMove(position+(Vector3)moveDistance, moveTime)
             .SetEase(Ease.OutBack)

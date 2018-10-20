@@ -11,11 +11,9 @@ public class RingEffect : MonoBehaviour
     float expandTime;
 
     SpriteRenderer spriteRenderer;
-    Vector3 firstScale;
 	void Start ()
 	{
         spriteRenderer = GetComponent<SpriteRenderer>();
-        firstScale = transform.lossyScale;
         Expand();
 	}
 

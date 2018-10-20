@@ -8,35 +8,9 @@ using UnityEditor.SceneManagement;
 
 public static class EditorExtension
 {
-#if UNITY_EDITOR
-
     static Vector3 vector3;//tmp用
-
-    /// <summary>
-    /// OnDrawGizmos内でしか呼び出せない
-    /// </summary>
-    /// <param name="from">始点</param>
-    /// <param name="direction">方向と長さ</param>
-    public static void DrawAllow(Vector3 from, Vector3 direction)
-    {
-        const float AllowTopLength = 0.3f;
-        const float AllowRadius = 20f;
-
-        var toPosition = from + direction;
-
-        var tmp = Quaternion.Euler(0, 0, AllowRadius) * -direction;
-        tmp = tmp.normalized * AllowTopLength;
-        Gizmos.DrawRay(toPosition, tmp);
-
-        tmp = Quaternion.Euler(0, 0, -AllowRadius) * -direction;
-        tmp = tmp.normalized * AllowTopLength;
-        Gizmos.DrawRay(toPosition, tmp);
-
-        Gizmos.DrawRay(from, direction);
-    }
-
     #region Transform拡張
-        public static void SetX(this Transform transform, float x)
+    public static void SetX(this Transform transform, float x)
         {
             vector3.Set(x, transform.position.y, transform.position.z);
             transform.position = vector3;
@@ -67,6 +41,31 @@ public static class EditorExtension
             transform.localPosition = vector3;
         }
     #endregion
+
+    /// <summary>
+    /// OnDrawGizmos内でしか呼び出せない
+    /// </summary>
+    /// <param name="from">始点</param>
+    /// <param name="direction">方向と長さ</param>
+    public static void DrawAllow(Vector3 from, Vector3 direction)
+    {
+        const float AllowTopLength = 0.3f;
+        const float AllowRadius = 20f;
+
+        var toPosition = from + direction;
+
+        var tmp = Quaternion.Euler(0, 0, AllowRadius) * -direction;
+        tmp = tmp.normalized * AllowTopLength;
+        Gizmos.DrawRay(toPosition, tmp);
+
+        tmp = Quaternion.Euler(0, 0, -AllowRadius) * -direction;
+        tmp = tmp.normalized * AllowTopLength;
+        Gizmos.DrawRay(toPosition, tmp);
+
+        Gizmos.DrawRay(from, direction);
+    }
+
+#if UNITY_EDITOR
 
     [MenuItem("MyGame/NextScene #RIGHT")]
     public static void LoadNextScene()

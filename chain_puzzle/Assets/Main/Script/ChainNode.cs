@@ -27,13 +27,19 @@ public class ChainNode : ConnectObject
     AudioClip chainExtendSound;
     [SerializeField,EnumFlags]
     ChainNodeAttribute nodeAttribute;
+    [SerializeField]
+    GameObject attackNodeAttributeEffect;
+
     public ChainNodeAttribute NodeAttribute
     {
         get { return nodeAttribute; }
     }
 
     void Start () {
-
+        if (nodeAttribute == ChainNodeAttribute.Attack)
+        {
+            Instantiate(attackNodeAttributeEffect, transform);
+        }
     }
 
     private void OnDrawGizmos()

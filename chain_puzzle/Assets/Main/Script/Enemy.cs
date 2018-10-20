@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int hp;
     [SerializeField]
-    DamageTextEffect damagetextEffect;
+    DamageTextEffect damageTextEffect;
     public int Hp
     {
         get { return hp; }
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
 
 	public void Damage(int value)
     {
-        Instantiate(damagetextEffect)
+        Instantiate(damageTextEffect)
         .GetComponent<DamageTextEffect>()
         .Initialize(transform.position,value);
 

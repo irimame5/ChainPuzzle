@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
@@ -26,6 +27,12 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
     Enemy enemy;
     [SerializeField]
     AudioClip mainBgm;
+    [SerializeField]
+    int playerHp;
+    [SerializeField]
+    Slider hpBar;
+    [SerializeField]
+    GameObject damageTextEffect;
 
     GameObject lastChainNodeImage;
     public GameParameter GameParameter
@@ -35,6 +42,8 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
 	void Start () {
         SoundManager.Instance.PlayBgmSingle(mainBgm);
+        hpBar.maxValue = playerHp;
+        hpBar.value = playerHp;
     }
 
     public bool SerchConnectedEdge(ChainEdge chainEdge)
@@ -140,6 +149,27 @@ public class TestSceneManager : MonoSingleton<TestSceneManager> {
 
         int damage = (int)(damageSum * gameParameter.DamageAttributeRate);
         enemy.Damage(damage);
+    }
+
+    public void Damage(int value)
+    {
+        //Instantiate(damageTextEffect)
+        //.GetComponent<DamageTextEffect>()
+        //.Initialize(transform.position, value);
+
+        playerHp -= value;
+        if (playerHp <= 0)
+        {
+            playerHp = 0;
+            hpBar.value = 0;
+            Dead();
+        }
+        hpBar.value = playerHp;
+    }
+
+    void Dead()
+    {
+
     }
 
     [ContextMenu("SerchAllEdge")]

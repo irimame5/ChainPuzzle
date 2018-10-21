@@ -18,7 +18,11 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     [SerializeField]
     GameObject gameClearUI;
     [SerializeField]
-    public Enemy Enemy;
+    public Enemy enemy;
+    public Enemy Enemy
+    {
+        get { return enemy; }
+    }
     [SerializeField]
     AudioClip mainBgm;
     [SerializeField]
@@ -30,20 +34,27 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     [SerializeField,SceneName]
     string[] sequances;
 
-    int sequanceIndex;
+    /// <summary>
+    /// ロード中のシーケンスがなければ-1
+    /// </summary>
+    int sequanceIndex = -1;
 	void Start () {
         SoundManager.Instance.PlayBgmSingle(mainBgm);
         hpBar.maxValue = playerHp;
         hpBar.value = playerHp;
 
-        LoadSequance();
+        LoadRandomSequance();
     }
 
-    public void LoadSequance()
+    public void LoadNextSequance()
     {
-        if (sequanceIndex != 0)
+        if (sequanceIndex == -1)
         {
-            SceneManager.UnloadSceneAsync(sequances[sequanceIndex-1]);
+            sequanceIndex = 0;
+        }else
+        {
+            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
+            sequanceIndex++;
         }
         if (sequanceIndex == sequances.Length)
         {
@@ -51,7 +62,29 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
             return;
         }
         SceneManager.LoadScene(sequances[sequanceIndex], LoadSceneMode.Additive);
-        sequanceIndex++;
+    }
+    public void LoadRandomSequance()
+    {
+        if (sequanceIndex == -1)
+        {
+            sequanceIndex = UnityEngine.Random.Range(0, sequances.Length);
+        }
+        else
+        {
+            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
+            sequanceIndex = UnityEngine.Random.Range(0,sequances.Length);
+        }
+        SceneManager.LoadScene(sequances[sequanceIndex], LoadSceneMode.Additive);
+    }
+    public void UnLoadSequance()
+    {
+        if (sequanceIndex == -1)
+        {
+            Debug.LogWarning("LoadされていないのにSequanceのunLoadが呼び出されました");
+            return;
+        }
+        SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
+        sequanceIndex = -1;
     }
 
     public void DamageToPlayer(int value)
@@ -68,6 +101,28 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
             Dead();
         }
         hpBar.value = playerHp;
+    }
+
+    public void EndSequance()
+    {
+        if (ClearCheck())
+        {
+            Clear();
+            UnLoadSequance();
+            return;
+        }
+        LoadRandomSequance();
+    }
+
+    bool ClearCheck()
+    {
+        if (enemy.DeadFlag)
+        {
+            return true;
+        }else
+        {
+            return false;
+        }
     }
 
     void Clear()

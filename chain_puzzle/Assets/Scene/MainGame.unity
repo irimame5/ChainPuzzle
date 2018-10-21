@@ -472,7 +472,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &416547474
 GameObject:
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameParameter: {fileID: 11400000, guid: 7324647f428736a49989041bb3d34858, type: 2}
   gameClearUI: {fileID: 1719997740}
-  Enemy: {fileID: 177536853}
+  enemy: {fileID: 177536853}
   mainBgm: {fileID: 8300000, guid: 64fc0f226e298ee4a85441a4e7bb1ef5, type: 3}
   playerHp: 100
   hpBar: {fileID: 2109190868}
@@ -523,7 +523,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536111480
 GameObject:
@@ -923,6 +923,38 @@ Prefab:
     - target: {fileID: 1444249500369330, guid: fd213873765d1944da80be26fa0b8cf6, type: 2}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114390548113535310, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: attackEffect
+      value: 
+      objectReference: {fileID: 1835247987068480, guid: 17049c3b4527a4a45aad4ddfaa431016,
+        type: 2}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: attackParticleEffect
+      value: 
+      objectReference: {fileID: 1866691285952704, guid: 497d3c0f1ac77da4084e637f4103c14a,
+        type: 2}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: attackTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: attackEffectShift
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: randomShiftRadius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd213873765d1944da80be26fa0b8cf6, type: 2}
@@ -1445,7 +1477,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1679697558
 Prefab:

@@ -1,5 +1,14 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 継承したクラスのStartでDontDestroyonLoad(gameObject)
+/// をするとゲーム全体でのシングルトンができる．
+/// しないとシーン内でのシングルトンができる．
+/// 継承先ではAwake,OnDestroyは使えないので，
+/// SubAwake,SubOnDestroyを使う.
+/// public class 継承クラス:MonoSingleton<継承クラス>って感じで使う.
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public abstract class MonoSingleton<T> : MonoBehaviour
     where T : MonoSingleton<T>
 {

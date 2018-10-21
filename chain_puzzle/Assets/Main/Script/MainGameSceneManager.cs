@@ -46,23 +46,36 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
         LoadRandomSequance();
     }
 
-    public void LoadNextSequance()
+    /// <summary>
+    /// Sequanceの状況によっては押されたくないので，
+    /// ここでbackしていいか調べながら呼び出す
+    /// </summary>
+    public void BackButtonPressed()
     {
-        if (sequanceIndex == -1)
+        if (sequanceIndex == -1)//-1だとSequanceがないのでSequanceManagerを参照できない
         {
-            sequanceIndex = 0;
-        }else
-        {
-            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
-            sequanceIndex++;
-        }
-        if (sequanceIndex == sequances.Length)
-        {
-            Clear();
             return;
         }
-        SceneManager.LoadScene(sequances[sequanceIndex], LoadSceneMode.Additive);
+        SequanceManager.Instance.RemoveChainNode();
     }
+
+    //public void LoadNextSequance()
+    //{
+    //    if (sequanceIndex == -1)
+    //    {
+    //        sequanceIndex = 0;
+    //    }else
+    //    {
+    //        SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
+    //        sequanceIndex++;
+    //    }
+    //    if (sequanceIndex == sequances.Length)
+    //    {
+    //        Clear();
+    //        return;
+    //    }
+    //    SceneManager.LoadScene(sequances[sequanceIndex], LoadSceneMode.Additive);
+    //}
     public void LoadRandomSequance()
     {
         if (sequanceIndex == -1)
@@ -71,7 +84,7 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
         }
         else
         {
-            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
+            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);//UnLoadSceneにしたいけど,Asyncを使えって言われた
             sequanceIndex = UnityEngine.Random.Range(0,sequances.Length);
         }
         SceneManager.LoadScene(sequances[sequanceIndex], LoadSceneMode.Additive);
@@ -83,8 +96,25 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
             Debug.LogWarning("LoadされていないのにSequanceのunLoadが呼び出されました");
             return;
         }
-        SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);
+        SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);//UnLoadSceneにしたいけど,Asyncを使えって言われた
         sequanceIndex = -1;
+    }
+
+    public void EndSequance()
+    {
+        if (ClearCheck())
+        {
+            UnLoadSequance();
+            Clear();
+            return;
+        }
+        UnLoadSequance();
+        enemy.Attack(EndEnemyAttack);
+    }
+
+    public void EndEnemyAttack()
+    {
+        LoadRandomSequance();
     }
 
     public void DamageToPlayer(int value)
@@ -101,17 +131,6 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
             Dead();
         }
         hpBar.value = playerHp;
-    }
-
-    public void EndSequance()
-    {
-        if (ClearCheck())
-        {
-            Clear();
-            UnLoadSequance();
-            return;
-        }
-        LoadRandomSequance();
     }
 
     bool ClearCheck()

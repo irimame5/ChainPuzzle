@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     GameObject attackParticleEffect;
     [SerializeField]
     float attackTime = 0.85f;
-    [SerializeField,Tooltip("攻撃した球をずらす量,カメラから見えなくなってしまうの")]
+    [SerializeField,Tooltip("攻撃した球をカメラの向きにずらす量,カメラから見えなくなってしまうのを防ぐ")]
     float attackEffectShift=1f;
     [SerializeField,Tooltip("x,y平面上にランダムに車室位置をずらすための半径")]
     float randomShiftRadius;
@@ -38,8 +38,16 @@ public class Enemy : MonoBehaviour
         slider.value = hp;
 	}
 
-    [ContextMenu("Attack")]
-    public void Attack()
+    /// <summary>
+    /// 引数があるとContextMenuから呼べないので別関数にしている
+    /// </summary>
+    [ContextMenu("AttackTest")]
+    void AttackTest()
+    {
+        Attack();
+    }
+
+    public void Attack(System.Action onComplete = null)
     {
         //Debug.Break();
         var instAttackEffect = Instantiate(attackEffect, transform.position, attackEffect.transform.rotation);
@@ -54,13 +62,16 @@ public class Enemy : MonoBehaviour
         (
             instAttackEffect.transform.DOMove(targetPos, attackTime).SetEase(Ease.Linear)
          );
+        System.Action action;
+        action = () =>
+         {
+             Instantiate(attackParticleEffect, targetPos, attackParticleEffect.transform.rotation);
+             Destroy(instAttackEffect);
+         };
+        if (onComplete != null) { action += onComplete; }
         sequance.OnComplete
         (
-            () => 
-            {
-                Instantiate(attackParticleEffect, targetPos, attackParticleEffect.transform.rotation);
-                Destroy(instAttackEffect);
-            }
+            ()=> { action.Invoke(); }//actionとTweenCallbackは中身は一緒なんだけど別の型なのでラムダで変換している
         );
 
     }

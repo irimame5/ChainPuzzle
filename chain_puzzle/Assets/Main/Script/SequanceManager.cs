@@ -97,6 +97,27 @@ public class SequanceManager : MonoSingleton<SequanceManager>
 
     }
 
+    /// <summary>
+    /// このノードが行き止まりかどうか
+    /// </summary>
+    /// <param name="node">調べるノード</param>
+    /// <returns>行き止まりならtrue</returns>
+    public bool CheckDeadEndNode(ChainNode node)
+    {
+        foreach (var edge in node.ConnectedChainEdge)
+        {
+            if (!CheckEdgePass(edge))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// すべてのエッジを通っているか
+    /// </summary>
+    /// <returns>すべてのエッジを通っていればtrue</returns>
     public bool CheckAllEdgePass()
     {
         foreach (var edge in chainEdges)
@@ -120,7 +141,7 @@ public class SequanceManager : MonoSingleton<SequanceManager>
         return false;
     }
 
-    public void CahinAllConect()
+    public void ChainAllConect()
     {
         var cahiNodeAttributes =
             connectObjects.Where(x => x is ChainNode)

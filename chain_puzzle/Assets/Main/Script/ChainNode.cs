@@ -21,15 +21,18 @@ public class ChainNode : ConnectObject
     GameObject ringEffect;
     [SerializeField]
     ChainEdge[] connectedChainEdges;
+    public ChainEdge[] ConnectedChainEdge
+    {
+        get { return connectedChainEdges; }
+    }
     [SerializeField]
     AudioClip connectChainSound;
     [SerializeField]
     AudioClip chainExtendSound;
-    [SerializeField,EnumFlags]
-    ChainNodeAttribute nodeAttribute;
     [SerializeField]
     GameObject attackNodeAttributeEffect;
-
+    [SerializeField,EnumFlags]
+    ChainNodeAttribute nodeAttribute;
     public ChainNodeAttribute NodeAttribute
     {
         get { return nodeAttribute; }
@@ -146,8 +149,8 @@ public class ChainNode : ConnectObject
         CameraEffects.Instance.Shake();
         Instantiate(ringEffect, conectNode.transform.position, ringEffect.transform.rotation);
 
-        bool b = SequanceManager.Instance.CheckAllEdgePass();
-        if (b) { SequanceManager.Instance.CahinAllConect(); }
+        bool b = SequanceManager.Instance.CheckDeadEndNode(conectNode);
+        if (b) { SequanceManager.Instance.ChainAllConect(); }
     }
 }
 

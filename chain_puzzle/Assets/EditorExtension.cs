@@ -67,7 +67,7 @@ public static class EditorExtension
 
 #if UNITY_EDITOR
 
-    [MenuItem("MyGame/NextScene #RIGHT")]
+    [MenuItem("MyGame/NextScene %#KP.")]
     public static void LoadNextScene()
     {
         if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) { return; }//シーンが保存できなきゃやめる
@@ -84,7 +84,7 @@ public static class EditorExtension
         }
         EditorSceneManager.OpenScene(scenes[nextSceneIndex].path);
     }
-    [MenuItem("MyGame/BackScene #LEFT")]
+    [MenuItem("MyGame/BackScene %#KP,")]
     public static void LoadBackScene()
     {
         if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) { return; }//シーンが保存できなきゃやめる

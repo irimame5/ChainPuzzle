@@ -4,6 +4,7 @@
 [Bb]uild/
 [Bb]uilds/
 chain_puzzle/Assets/AssetStoreTools*
+chain_puzzle/Assets/Editor Default Resources*
 
 # Visual Studio cache directory
 .vs/

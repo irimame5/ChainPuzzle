@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 90955187}
   - component: {fileID: 90955185}
   m_Layer: 0
-  m_Name: path4163
+  m_Name: LeftUpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,7 +222,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -4
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -4
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 8199338}
@@ -264,6 +264,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 161647757}
+  - component: {fileID: 161647758}
   m_Layer: 0
   m_Name: Devil
   m_TagString: Untagged
@@ -286,6 +287,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &161647758
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 161647756}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b92328914603536438da532c58de7b73, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &250789285
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,7 +315,7 @@ GameObject:
   - component: {fileID: 250789289}
   - component: {fileID: 250789287}
   m_Layer: 0
-  m_Name: path4165
+  m_Name: LeftForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,7 +367,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -379,7 +397,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 1908176098}
@@ -406,7 +424,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 544575281}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.063, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 874081687}
@@ -585,7 +603,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -615,7 +633,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 1118959869}
@@ -785,7 +803,7 @@ GameObject:
   - component: {fileID: 850221527}
   - component: {fileID: 850221525}
   m_Layer: 0
-  m_Name: path4167
+  m_Name: RightForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,7 +855,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -867,7 +885,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 1506086586}
@@ -900,7 +918,7 @@ Transform:
   - {fileID: 638590666}
   m_Father: {fileID: 544575282}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90.00001}
 --- !u!114 &874081688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.16000003
+  m_Length: 0.16
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 638590666}
   m_AttachedIK: {fileID: 0}
@@ -1141,7 +1159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.21805511
+  m_Length: 0.21805502
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 622862750}
   m_AttachedIK: {fileID: 0}
@@ -1167,14 +1185,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1448460385}
-  m_LocalRotation: {x: 0, y: 0, z: 0.6245965, w: 0.78094774}
+  m_LocalRotation: {x: 0, y: 0, z: 0.52004015, w: 0.85414183}
   m_LocalPosition: {x: 0.09036885, y: 0.000000007450581, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1506086586}
   m_Father: {fileID: 586128963}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 77.305}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 62.670002}
 --- !u!114 &1448460387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,7 +1205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.19504939
+  m_Length: 0.19504938
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 1506086586}
   m_AttachedIK: {fileID: 0}
@@ -1234,7 +1252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.13000676
+  m_Length: 0.13000678
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 1984022889}
   m_AttachedIK: {fileID: 0}
@@ -1260,13 +1278,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1506086585}
-  m_LocalRotation: {x: 0, y: 0, z: 0.98496604, w: 0.17274801}
+  m_LocalRotation: {x: 0, y: 0, z: 0.9835988, w: 0.18037023}
   m_LocalPosition: {x: 0.19504936, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1448460386}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 160.10501}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 159.21701}
 --- !u!114 &1506086587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1418,7 +1436,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1818890530}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0019012988, y: 0.019770592, z: 0}
+  m_LocalPosition: {x: 0.785, y: -0.056, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 685944428}
@@ -1495,7 +1513,7 @@ GameObject:
   - component: {fileID: 1844029662}
   - component: {fileID: 1844029660}
   m_Layer: 0
-  m_Name: path4188
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,8 +1703,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 1.66
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1709,7 +1727,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959343745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0.09, z: -8.61}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1726,7 +1744,7 @@ GameObject:
   - component: {fileID: 1961193415}
   - component: {fileID: 1961193413}
   m_Layer: 0
-  m_Name: upperArm
+  m_Name: RightUpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1778,7 +1796,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -4
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1808,7 +1826,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -4
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 1448460386}
@@ -1875,7 +1893,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -1905,7 +1923,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 622862750}
@@ -2064,7 +2082,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2094,7 +2112,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 638590666}

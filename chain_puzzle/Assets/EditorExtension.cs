@@ -1,10 +1,12 @@
 ﻿using System;
-using UnityEngine;
 using System.Linq;
+using System.IO;
+using UnityEngine;
+using System.Reflection;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.SceneManagement;
-#endif 
+#endif
 
 public static class EditorExtension
 {
@@ -42,6 +44,17 @@ public static class EditorExtension
         }
     #endregion
 
+    public static void SetWidth(this SpriteRenderer spriteRenderer,float width)
+    {
+        vector3.Set(width,spriteRenderer.size.y,0);
+        spriteRenderer.size = vector3;
+    }
+    public static void SetHeight(this SpriteRenderer spriteRenderer, float height)
+    {
+        vector3.Set(spriteRenderer.size.x,height, 0);
+        spriteRenderer.size = vector3;
+    }
+
     /// <summary>
     /// OnDrawGizmos内でしか呼び出せない
     /// </summary>
@@ -67,7 +80,24 @@ public static class EditorExtension
 
 #if UNITY_EDITOR
 
-    [MenuItem("MyGame/NextScene %#KP.")]
+    [MenuItem("Assets/Create/MyGame/Create Text File")]
+    static void CreateTextFile()
+    {
+        string createPath = GetCurrentDirectory()+@"/newText.txt";
+        var streamWriter = new StreamWriter(createPath);
+        streamWriter.Close();
+        AssetDatabase.Refresh();
+    }
+    static string GetCurrentDirectory()
+    {
+        var flag = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
+        var asm = Assembly.Load("UnityEditor.dll");
+        var typeProjectBrowser = asm.GetType("UnityEditor.ProjectBrowser");
+        var projectBrowserWindow = EditorWindow.GetWindow(typeProjectBrowser);
+        return (string)typeProjectBrowser.GetMethod("GetActiveFolderPath", flag).Invoke(projectBrowserWindow, null);
+    }
+
+    [MenuItem("MyGame/NextScene %KP.")]
     public static void LoadNextScene()
     {
         if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) { return; }//シーンが保存できなきゃやめる
@@ -84,7 +114,7 @@ public static class EditorExtension
         }
         EditorSceneManager.OpenScene(scenes[nextSceneIndex].path);
     }
-    [MenuItem("MyGame/BackScene %#KP,")]
+    [MenuItem("MyGame/BackScene %KP,")]
     public static void LoadBackScene()
     {
         if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo()) { return; }//シーンが保存できなきゃやめる
@@ -103,7 +133,7 @@ public static class EditorExtension
         EditorSceneManager.OpenScene(scenes[nextSceneIndex].path);
     }
 
-#endif 
+#endif
 }
 
 [AttributeUsage(AttributeTargets.Enum | AttributeTargets.Field)]
@@ -126,17 +156,17 @@ public sealed class SceneNameAttribute : PropertyAttribute
 [CustomPropertyDrawer( typeof( EnumFlagsAttribute ) )]
 public sealed class EnumFlagsAttributeDrawer : PropertyDrawer
 {
-    public override void OnGUI( 
-        Rect position, 
-        SerializedProperty prop, 
-        GUIContent label 
+    public override void OnGUI(
+        Rect position,
+        SerializedProperty prop,
+        GUIContent label
     )
     {
-        prop.intValue = EditorGUI.MaskField( 
-            position, 
-            label, 
-            prop.intValue, 
-            prop.enumNames 
+        prop.intValue = EditorGUI.MaskField(
+            position,
+            label,
+            prop.intValue,
+            prop.enumNames
         );
     }
 }
@@ -168,7 +198,7 @@ public sealed class SceneNameAttributeDrawer : PropertyDrawer
         if (property.propertyType == SerializedPropertyType.String)
         {
             int currentIndex = Array.IndexOf(sceneNames, property.stringValue);
-            
+
             var nextIndex = EditorGUI.Popup(position,label.text , currentIndex, sceneNames);
             if (nextIndex == -1)
             {

@@ -214,6 +214,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4213341371546844, guid: afa36a5b628b9f5488aaa557080316cd,
     type: 2}
   m_PrefabInternal: {fileID: 34024682}
+--- !u!23 &34024685 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23610034773747136, guid: afa36a5b628b9f5488aaa557080316cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 34024682}
 --- !u!1 &82686401
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,6 +267,11 @@ Prefab:
     - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
         type: 2}
       propertyPath: chainEdges.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodeMeshRenderers.Array.size
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4527722641083328, guid: e2b8915175689954c815a1cdde35331c, type: 2}
@@ -321,6 +331,31 @@ Prefab:
       propertyPath: chainEdges.Array.data[4]
       value: 
       objectReference: {fileID: 1573724735}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodeMeshRenderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 34024685}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodeMeshRenderers.Array.data[1]
+      value: 
+      objectReference: {fileID: 316414990}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodeMeshRenderers.Array.data[2]
+      value: 
+      objectReference: {fileID: 356740639}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodeMeshRenderers.Array.data[3]
+      value: 
+      objectReference: {fileID: 1120651564}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodeMeshRenderers.Array.data[4]
+      value: 
+      objectReference: {fileID: 1408275482}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2b8915175689954c815a1cdde35331c, type: 2}
   m_IsPrefabParent: 0
@@ -484,6 +519,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4213341371546844, guid: afa36a5b628b9f5488aaa557080316cd,
     type: 2}
   m_PrefabInternal: {fileID: 316414987}
+--- !u!23 &316414990 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23610034773747136, guid: afa36a5b628b9f5488aaa557080316cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 316414987}
 --- !u!1001 &356740636
 Prefab:
   m_ObjectHideFlags: 0
@@ -587,6 +627,11 @@ MonoBehaviour:
 --- !u!4 &356740638 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4213341371546844, guid: afa36a5b628b9f5488aaa557080316cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 356740636}
+--- !u!23 &356740639 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23610034773747136, guid: afa36a5b628b9f5488aaa557080316cd,
     type: 2}
   m_PrefabInternal: {fileID: 356740636}
 --- !u!1001 &452247944
@@ -1096,6 +1141,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4213341371546844, guid: afa36a5b628b9f5488aaa557080316cd,
     type: 2}
   m_PrefabInternal: {fileID: 1120651561}
+--- !u!23 &1120651564 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23610034773747136, guid: afa36a5b628b9f5488aaa557080316cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1120651561}
 --- !u!1001 &1408275479
 Prefab:
   m_ObjectHideFlags: 0
@@ -1199,6 +1249,11 @@ MonoBehaviour:
 --- !u!4 &1408275481 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4213341371546844, guid: afa36a5b628b9f5488aaa557080316cd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1408275479}
+--- !u!23 &1408275482 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 23610034773747136, guid: afa36a5b628b9f5488aaa557080316cd,
     type: 2}
   m_PrefabInternal: {fileID: 1408275479}
 --- !u!1001 &1573724732

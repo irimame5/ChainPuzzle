@@ -81,8 +81,8 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989983733293626}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -179,9 +179,9 @@ MonoBehaviour:
   - {fileID: 0}
   connectChainSound: {fileID: 8300000, guid: e96a16c91e85559449c8cab845fef2ef, type: 3}
   chainExtendSound: {fileID: 8300000, guid: cad8264e5caaf2f469f83acad5471fb2, type: 3}
-  nodeAttribute: 0
   attackNodeAttributeEffect: {fileID: 1697958962518248, guid: dc637dc6e3576c94ca8181634194cf53,
     type: 2}
+  nodeAttribute: 0
 --- !u!212 &212569238111119442
 SpriteRenderer:
   m_ObjectHideFlags: 1

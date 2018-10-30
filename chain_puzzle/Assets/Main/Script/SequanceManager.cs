@@ -17,8 +17,11 @@ public class SequanceManager : MonoSingleton<SequanceManager>
     [SerializeField]
     GameObject lastChainNodeImagePrefab;
 
-    [SerializeField,Disable]
+    [SerializeField, Disable]
     ChainEdge[] chainEdges;
+    [SerializeField, Disable]
+    MeshRenderer[] chainNodeMeshRenderers;
+
     GameObject lastChainNodeImage;
 
     void Start ()
@@ -35,6 +38,14 @@ public class SequanceManager : MonoSingleton<SequanceManager>
     {
         chainEdges = null;
         chainEdges = FindObjectsOfType<ChainEdge>();
+    }
+    [ContextMenu("SerchAllNodeRenderer")]
+    void SerchAllNodeRenderer()
+    {
+        chainNodeMeshRenderers = null;
+        var chainNodes = FindObjectsOfType<ChainNode>();
+        var renderers = chainNodes.Select(x => { return x.GetComponentInChildren<MeshRenderer>(); });
+        chainNodeMeshRenderers = renderers.ToArray();
     }
 #endif
 

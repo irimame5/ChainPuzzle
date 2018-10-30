@@ -122,7 +122,6 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     public IEnumerator DamageToEnemy(int damage)
     {
         yield return StartCoroutine(enemy.Damage(damage));
-
         EndSequance();
     }
 

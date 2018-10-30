@@ -192,9 +192,8 @@ public class SequanceManager : MonoSingleton<SequanceManager>
         const float MaxEmmisionTime = 1f;
         const float ChageClearTime = 0.4f;
 
-        var chainRenderers = chainEdges.Select(chain => chain.GetComponent<MeshRenderer>());
-        //var renderers = chainRenderers.Concat(chainNodeMeshRenderers).ToList();
-        var renderers = chainNodeMeshRenderers;
+        var chainRenderers = chainEdges.Select(chain => chain.GetComponentInChildren<MeshRenderer>()).Where(x => x != null);
+        var renderers = chainRenderers.Concat(chainNodeMeshRenderers).ToList();
 
         float timer = 0;
         while (true)

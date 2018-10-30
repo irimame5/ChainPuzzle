@@ -39,27 +39,23 @@ public class Enemy : MonoBehaviour
     [ContextMenu("AttackTest")]
     void AttackTest()
     {
-        Attack();
+        StartCoroutine(Attack());
     }
 
-    public void Attack(System.Action onComplete = null)
+    public IEnumerator Attack(System.Action onComplete = null)
     {
-        const float AttackLag = 2;
+        const float AttackLag = 1;
         const float OnCompleteLag = 1;
 
-        System.Action action = () =>
-        {
-            MainGameSceneManager.Instance.DamageToPlayer(attackPower);
-            CameraEffects.Instance.PlayerDamage();
-        };
+        yield return new WaitForSeconds(AttackLag);
+        MainGameSceneManager.Instance.DamageToPlayer(attackPower);
+        CameraEffects.Instance.PlayerDamage();
+
         if (onComplete != null)
         {
-            action += () => 
-            {
-                DOVirtual.DelayedCall(OnCompleteLag,()=> { onComplete.Invoke(); });
-            };
+            yield return new WaitForSeconds(OnCompleteLag);
+            onComplete.Invoke();
         }
-        DOVirtual.DelayedCall(AttackLag, ()=> { action.Invoke(); });
     }
 
 	public IEnumerator Damage(int value)

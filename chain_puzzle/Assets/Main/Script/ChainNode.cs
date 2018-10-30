@@ -41,7 +41,8 @@ public class ChainNode : ConnectObject
     void Start () {
         if (nodeAttribute == ChainNodeAttribute.Attack)
         {
-            Instantiate(attackNodeAttributeEffect, transform);
+            var effect = Instantiate(attackNodeAttributeEffect, transform);
+            effect.transform.SetLocalZ(0.5f);
         }
     }
 

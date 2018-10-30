@@ -102,27 +102,26 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
         sequanceIndex = -1;
     }
 
-    public void EndSequance()
+    public IEnumerator EndSequance()
     {
+        const float AttackedLag = 0.8f;
+
         UnLoadSequance();
 
         if (ClearCheck())
         {
             Clear();
-            return;
+            yield break;
         }
-        enemy.Attack(EndEnemyAttack);
-    }
-
-    public void EndEnemyAttack()
-    {
+        yield return StartCoroutine(enemy.Attack());
+        yield return new WaitForSeconds(AttackedLag);
         LoadRandomSequance();
     }
 
     public IEnumerator DamageToEnemy(int damage)
     {
         yield return StartCoroutine(enemy.Damage(damage));
-        EndSequance();
+        StartCoroutine(EndSequance());
     }
 
     public void DamageToPlayer(int value)

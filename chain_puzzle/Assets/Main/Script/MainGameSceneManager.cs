@@ -120,6 +120,8 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 
     public IEnumerator DamageToEnemy(int damage)
     {
+        yield return StartCoroutine(SequanceManager.Instance.NodeMaterialGlow());
+
         yield return StartCoroutine(enemy.Damage(damage));
         StartCoroutine(EndSequance());
     }

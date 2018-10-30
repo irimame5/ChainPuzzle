@@ -180,4 +180,57 @@ public class SequanceManager : MonoSingleton<SequanceManager>
         int damage = (int)(damageSum * MainGameSceneManager.Instance.GameParameter.DamageAttributeRate);
         StartCoroutine(MainGameSceneManager.Instance.DamageToEnemy(damage));
     }
+
+    [ContextMenu("NodematerialGlowTest")]
+    public void NodematerialGlowTest()
+    {
+        StartCoroutine(NodeMaterialGlow());
+    }
+
+    public IEnumerator NodeMaterialGlow()
+    {
+        const float MaxEmmisionTime = 1f;
+        const float ChageClearTime = 0.4f;
+
+        var chainRenderers = chainEdges.Select(chain => chain.GetComponent<MeshRenderer>());
+        //var renderers = chainRenderers.Concat(chainNodeMeshRenderers).ToList();
+        var renderers = chainNodeMeshRenderers;
+
+        float timer = 0;
+        while (true)
+        {
+            yield return null;
+            timer += Time.deltaTime;
+            if (MaxEmmisionTime <= timer) { break; }
+            float rate = timer / MaxEmmisionTime;
+            Color currentColor = new Color(rate, rate, rate);
+            foreach (var meshRenderer in renderers)
+            {
+                meshRenderer.material.SetColor("_EmissionColor", currentColor);
+            }
+        }
+        foreach (var meshRenderer in renderers)
+        {
+            meshRenderer.material.SetColor("_EmissionColor", Color.white);
+        }
+
+        timer = 0;
+        while (true)
+        {
+            yield return null;
+            timer += Time.deltaTime;
+            if (ChageClearTime <= timer) { break; }
+            float rate = timer / ChageClearTime;
+            foreach (var meshRenderer in renderers)
+            {
+                Color materialColor = meshRenderer.material.GetColor("_Color");
+                materialColor.a = 1 - rate;
+                meshRenderer.material.SetColor("_Color", materialColor);
+            }
+        }
+        foreach (var meshRenderer in renderers)
+        {
+            meshRenderer.material.SetColor("_Color", Color.clear);
+        }
+    }
 }

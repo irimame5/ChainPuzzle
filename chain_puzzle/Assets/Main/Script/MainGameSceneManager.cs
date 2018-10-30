@@ -104,19 +104,26 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 
     public void EndSequance()
     {
+        UnLoadSequance();
+
         if (ClearCheck())
         {
-            UnLoadSequance();
             Clear();
             return;
         }
-        UnLoadSequance();
         enemy.Attack(EndEnemyAttack);
     }
 
     public void EndEnemyAttack()
     {
         LoadRandomSequance();
+    }
+
+    public IEnumerator DamageToEnemy(int damage)
+    {
+        yield return StartCoroutine(enemy.Damage(damage));
+
+        EndSequance();
     }
 
     public void DamageToPlayer(int value)

@@ -62,30 +62,27 @@ public class Enemy : MonoBehaviour
         DOVirtual.DelayedCall(AttackLag, ()=> { action.Invoke(); });
     }
 
-	public void Damage(int value)
+	public IEnumerator Damage(int value)
     {
         const float DamageLag = 0.3f;
         const float DamageTextLag = 0.2f;
-        DOVirtual.DelayedCall(DamageLag, () => 
-        {
-            Instantiate(damageParticleEffect, transform.position, Quaternion.identity);
-            System.Action action = () =>
-            {
-                Instantiate(damageTextEffect)
-                .GetComponent<DamageTextEffect>()
-                .Initialize(transform.position, value);
-            };
-            DOVirtual.DelayedCall(DamageTextLag, () => { action.Invoke(); });
 
-            hp -= value;
-            if (hp <= 0)
-            {
-                hp = 0;
-                slider.value = 0;
-                Dead();
-            }
-            slider.value = hp;
-        });
+        yield return new WaitForSeconds(DamageLag);
+        Instantiate(damageParticleEffect, transform.position, Quaternion.identity);
+
+        yield return new WaitForSeconds(DamageTextLag);
+        Instantiate(damageTextEffect)
+        .GetComponent<DamageTextEffect>()
+        .Initialize(transform.position, value);
+
+        hp -= value;
+        if (hp <= 0)
+        {
+            hp = 0;
+            slider.value = 0;
+            Dead();
+        }
+        slider.value = hp;
     }
 
     void Dead()

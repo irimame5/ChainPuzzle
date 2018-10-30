@@ -167,7 +167,6 @@ public class SequanceManager : MonoSingleton<SequanceManager>
         recoverySum = cahiNodeAttributes.Where(x => attributeCompare(x, ChainNodeAttribute.Recovery)).Count();
 
         int damage = (int)(damageSum * MainGameSceneManager.Instance.GameParameter.DamageAttributeRate);
-        MainGameSceneManager.Instance.enemy.Damage(damage);
-        MainGameSceneManager.Instance.EndSequance();
+        StartCoroutine(MainGameSceneManager.Instance.DamageToEnemy(damage));
     }
 }

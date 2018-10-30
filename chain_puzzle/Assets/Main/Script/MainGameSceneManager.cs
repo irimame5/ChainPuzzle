@@ -31,6 +31,8 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     Slider hpBar;
     [SerializeField]
     GameObject damageTextEffect;
+    [SerializeField]
+    AudioClip damageSound;
     [SerializeField,SceneName]
     string[] sequances;
 
@@ -119,9 +121,7 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 
     public void DamageToPlayer(int value)
     {
-        //Instantiate(damageTextEffect)
-        //.GetComponent<DamageTextEffect>()
-        //.Initialize(transform.position, value);
+        SoundManager.Instance.PlaySE(damageSound);
 
         playerHp -= value;
         if (playerHp <= 0)

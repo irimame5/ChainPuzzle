@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
         System.Action action = () =>
         {
             MainGameSceneManager.Instance.DamageToPlayer(attackPower);
-            CameraEffects.Instance.Shake();
+            CameraEffects.Instance.PlayerDamage();
         };
         if (onComplete != null)
         {

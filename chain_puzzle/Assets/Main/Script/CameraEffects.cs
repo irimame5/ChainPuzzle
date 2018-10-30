@@ -8,7 +8,11 @@ using DG.Tweening;
 /// </summary>
 public class CameraEffects : MonoSingleton<CameraEffects> {
 
+    [SerializeField]
+    Animator frontestColorPanel;
+
 	void Start () {
+
 	}
 
     /// <summary>
@@ -23,5 +27,11 @@ public class CameraEffects : MonoSingleton<CameraEffects> {
     public void Shake(float shakeTime = 0.3f)
     {
         transform.DOShakePosition(shakeTime);
+    }
+
+    public void PlayerDamage()
+    {
+        Shake();
+        frontestColorPanel.SetTrigger("Damage");
     }
 }

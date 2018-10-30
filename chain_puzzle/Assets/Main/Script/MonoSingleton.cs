@@ -9,11 +9,15 @@
 /// public class 継承クラス:MonoSingleton<継承クラス>って感じで使う.
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public abstract class MonoSingleton<T> : MonoBehaviour
-    where T : MonoSingleton<T>
+public abstract class MonoSingleton<T> : 
+    MonoBehaviour where T : MonoSingleton<T>
 {
 
-    void Awake()
+    /// <summary>
+    /// すでにインスタンスがあれば破棄
+    /// 値をシーンごとにコピーする場合はこれをオーバーライド
+    /// </summary>
+    protected virtual void Awake()
     {
         if (_Instance != null)
         {
@@ -30,7 +34,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour
 
     }
 
-    void OnDestroy()
+    protected virtual void OnDestroy()
     {
         SubOnDestroy();
         if (Instance == this)
@@ -53,7 +57,7 @@ public abstract class MonoSingleton<T> : MonoBehaviour
             }
             return _Instance;
         }
-        private set
+        protected set
         {
             _Instance = value;
         }

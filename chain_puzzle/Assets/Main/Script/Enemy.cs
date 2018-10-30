@@ -10,16 +10,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     DamageTextEffect damageTextEffect;
     [SerializeField]
+    GameObject damageParticleEffect;
+    [SerializeField]
     GameObject attackEffect;
     [SerializeField]
-    GameObject attackParticleEffect;
-    [SerializeField]
-    float attackTime = 0.85f;
-    [SerializeField,Tooltip("攻撃した球をカメラの向きにずらす量,カメラから見えなくなってしまうのを防ぐ")]
-    float attackEffectShift=1f;
-    [SerializeField,Tooltip("x,y平面上にランダムに車室位置をずらすための半径")]
-    float randomShiftRadius;
-
+    int attackPower = 10;
     [SerializeField]
     int hp;
     public int Hp
@@ -49,47 +44,48 @@ public class Enemy : MonoBehaviour
 
     public void Attack(System.Action onComplete = null)
     {
-        //Debug.Break();
-        var instAttackEffect = Instantiate(attackEffect, transform.position, attackEffect.transform.rotation);
-        var cameraPos = Camera.main.transform.position;
-        var cameraToEnemy = transform.position - cameraPos;
-        cameraToEnemy.Normalize();
-        Vector3 randomShiftVector
-            = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f),0f);//本当はNormalizeする
-        var targetPos = cameraPos + cameraToEnemy * attackEffectShift + randomShiftVector * randomShiftRadius;
-        var sequance = DOTween.Sequence();
-        sequance.Append
-        (
-            instAttackEffect.transform.DOMove(targetPos, attackTime).SetEase(Ease.Linear)
-         );
-        System.Action action;
-        action = () =>
-         {
-             Instantiate(attackParticleEffect, targetPos, attackParticleEffect.transform.rotation);
-             Destroy(instAttackEffect);
-         };
-        if (onComplete != null) { action += onComplete; }
-        sequance.OnComplete
-        (
-            ()=> { action.Invoke(); }//actionとTweenCallbackは中身は一緒なんだけど別の型なのでラムダで変換している
-        );
+        const float AttackLag = 2;
+        const float OnCompleteLag = 1;
 
+        System.Action action = () =>
+        {
+            MainGameSceneManager.Instance.DamageToPlayer(attackPower);
+            CameraEffects.Instance.Shake();
+        };
+        if (onComplete != null)
+        {
+            action += () => 
+            {
+                DOVirtual.DelayedCall(OnCompleteLag,()=> { onComplete.Invoke(); });
+            };
+        }
+        DOVirtual.DelayedCall(AttackLag, ()=> { action.Invoke(); });
     }
 
 	public void Damage(int value)
     {
-        Instantiate(damageTextEffect)
-        .GetComponent<DamageTextEffect>()
-        .Initialize(transform.position,value);
-
-        hp -= value;
-        if (hp <= 0)
+        const float DamageLag = 0.3f;
+        const float DamageTextLag = 0.2f;
+        DOVirtual.DelayedCall(DamageLag, () => 
         {
-            hp = 0;
-            slider.value = 0;
-            Dead();
-        }
-        slider.value = hp;
+            Instantiate(damageParticleEffect, transform.position, Quaternion.identity);
+            System.Action action = () =>
+            {
+                Instantiate(damageTextEffect)
+                .GetComponent<DamageTextEffect>()
+                .Initialize(transform.position, value);
+            };
+            DOVirtual.DelayedCall(DamageTextLag, () => { action.Invoke(); });
+
+            hp -= value;
+            if (hp <= 0)
+            {
+                hp = 0;
+                slider.value = 0;
+                Dead();
+            }
+            slider.value = hp;
+        });
     }
 
     void Dead()

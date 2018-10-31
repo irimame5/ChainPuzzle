@@ -34,7 +34,15 @@ public class ChainNode : ConnectObject
     [SerializeField,EnumFlags]
     ChainNodeAttribute nodeAttribute;
     [SerializeField]
-    GameObject connectEffect;
+    GameObject connectEffectPrefab;
+
+    [SerializeField, Disable]
+    List<GameObject> attributeEffects = new List<GameObject>();
+    public List<GameObject> AttributeEffects
+    {
+        get { return attributeEffects; }
+    }
+
     public ChainNodeAttribute NodeAttribute
     {
         get { return nodeAttribute; }
@@ -45,6 +53,7 @@ public class ChainNode : ConnectObject
         {
             var effect = Instantiate(attackNodeAttributeEffect, transform);
             effect.transform.SetLocalZ(0.5f);
+            attributeEffects.Add(effect);
         }
         InstantiateConnectEffects();
     }
@@ -53,10 +62,12 @@ public class ChainNode : ConnectObject
     {
         foreach(var chain in connectedChainEdges)
         {
-            var effect = Instantiate(connectEffect, chain.transform).GetComponent<ConnectEffect>();
+            var effectObj = Instantiate(connectEffectPrefab, chain.transform);
+            chain.ConnectEffects.Add(effectObj);
+            var connectEffect = effectObj.GetComponent<ConnectEffect>();
             var start = transform.position;
             var end = chain.GetConnectedOtherNode(this).transform.position;
-            effect.Initialize(start, end);
+            connectEffect.Initialize(start, end);
         }
     }
 

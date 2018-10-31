@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPassed: 0
+  ConnectEffects: []
   connectedChainNodes:
   - {fileID: 1120651562}
   - {fileID: 34024683}
@@ -793,6 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPassed: 0
+  ConnectEffects: []
   connectedChainNodes:
   - {fileID: 356740637}
   - {fileID: 1024847600}
@@ -872,6 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPassed: 0
+  ConnectEffects: []
   connectedChainNodes:
   - {fileID: 1120651562}
   - {fileID: 316414988}
@@ -1061,6 +1064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPassed: 0
+  ConnectEffects: []
   connectedChainNodes:
   - {fileID: 356740637}
   - {fileID: 34024683}
@@ -1336,6 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPassed: 0
+  ConnectEffects: []
   connectedChainNodes:
   - {fileID: 316414988}
   - {fileID: 1408275480}
@@ -1521,6 +1526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsPassed: 0
+  ConnectEffects: []
   connectedChainNodes:
   - {fileID: 356740637}
   - {fileID: 1408275480}
@@ -1596,6 +1602,11 @@ Prefab:
     - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
         type: 2}
       propertyPath: chainEdges.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.size
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
@@ -1695,6 +1706,36 @@ Prefab:
       propertyPath: chainNodeMeshRenderers.Array.data[5]
       value: 
       objectReference: {fileID: 1408275482}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.data[0]
+      value: 
+      objectReference: {fileID: 34024683}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.data[1]
+      value: 
+      objectReference: {fileID: 316414988}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.data[2]
+      value: 
+      objectReference: {fileID: 356740637}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.data[3]
+      value: 
+      objectReference: {fileID: 1024847600}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.data[4]
+      value: 
+      objectReference: {fileID: 1120651562}
+    - target: {fileID: 114177752114921042, guid: e2b8915175689954c815a1cdde35331c,
+        type: 2}
+      propertyPath: chainNodes.Array.data[5]
+      value: 
+      objectReference: {fileID: 1408275480}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2b8915175689954c815a1cdde35331c, type: 2}
   m_IsPrefabParent: 0

@@ -6,6 +6,9 @@ public class ChainEdge : ConnectObject
 {
     [Disable]
     public bool IsPassed;
+    [Disable]
+    public List<GameObject> ConnectEffects = new List<GameObject>();
+
     [SerializeField]
     ChainNode[] connectedChainNodes = new ChainNode[2];
     public ChainNode[] ConnectedChainNodes

@@ -20,7 +20,7 @@ public class SequanceManager : MonoSingleton<SequanceManager>
     [SerializeField, Disable]
     ChainEdge[] chainEdges;
     [SerializeField, Disable]
-    MeshRenderer[] chainNodeMeshRenderers;
+    ChainNode[] chainNodes;
 
     GameObject lastChainNodeImage;
 
@@ -32,6 +32,7 @@ public class SequanceManager : MonoSingleton<SequanceManager>
 #if UNITY_EDITOR
     /// <summary>
     /// シーン作成時に実行しておく
+    /// 配列の長さをへっこうしてから実行しないと値が保存されないらしい
     /// </summary>
     [ContextMenu("SerchAllEdge")]
     void SerchAllEdge()
@@ -39,13 +40,12 @@ public class SequanceManager : MonoSingleton<SequanceManager>
         chainEdges = null;
         chainEdges = FindObjectsOfType<ChainEdge>();
     }
-    [ContextMenu("SerchAllNodeRenderer")]
+    [ContextMenu("SerchAllNode")]
     void SerchAllNodeRenderer()
     {
-        chainNodeMeshRenderers = null;
-        var chainNodes = FindObjectsOfType<ChainNode>();
-        var renderers = chainNodes.Select(x => { return x.GetComponentInChildren<MeshRenderer>(); });
-        chainNodeMeshRenderers = renderers.ToArray();
+        chainNodes = null;
+        chainNodes = FindObjectsOfType<ChainNode>();
+
     }
 #endif
 
@@ -193,8 +193,12 @@ public class SequanceManager : MonoSingleton<SequanceManager>
         const float ChageClearTime = 0.4f;
 
         var chainRenderers = chainEdges.Select(chain => chain.GetComponentInChildren<MeshRenderer>()).Where(x => x != null);
-        var renderers = chainRenderers.Concat(chainNodeMeshRenderers).ToList();
+        var renderers = chainRenderers
+            .Concat(chainNodes
+            .Select(node=>node.GetComponentInChildren<MeshRenderer>()))
+            .ToList();
 
+        //モデルたちを光らせていく
         float timer = 0;
         while (true)
         {
@@ -213,6 +217,18 @@ public class SequanceManager : MonoSingleton<SequanceManager>
             meshRenderer.material.SetColor("_EmissionColor", Color.white);
         }
 
+        Destroy(lastChainNodeImage);
+        var connectEffects = chainEdges.SelectMany(x => x.ConnectEffects)
+            .Select(x=>x.GetComponentInChildren<ParticleSystem>());//エフェクトを破棄
+        foreach(var connectEffect in connectEffects)
+        { connectEffect.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear); }
+        var attributeEffects = chainNodes.SelectMany(x => x.AttributeEffects)
+            .Select(x => x.GetComponent<ParticleSystem>());//エフェクトを破棄
+        foreach (var attributeEffect in attributeEffects)
+        { attributeEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear); }
+
+
+        //モデルたちを透過させていく
         timer = 0;
         while (true)
         {

@@ -33,6 +33,8 @@ public class ChainNode : ConnectObject
     GameObject attackNodeAttributeEffect;
     [SerializeField,EnumFlags]
     ChainNodeAttribute nodeAttribute;
+    [SerializeField]
+    GameObject connectEffect;
     public ChainNodeAttribute NodeAttribute
     {
         get { return nodeAttribute; }
@@ -43,6 +45,18 @@ public class ChainNode : ConnectObject
         {
             var effect = Instantiate(attackNodeAttributeEffect, transform);
             effect.transform.SetLocalZ(0.5f);
+        }
+        InstantiateConnectEffects();
+    }
+
+    void InstantiateConnectEffects()
+    {
+        foreach(var chain in connectedChainEdges)
+        {
+            var effect = Instantiate(connectEffect, chain.transform).GetComponent<ConnectEffect>();
+            var start = transform.position;
+            var end = chain.GetConnectedOtherNode(this).transform.position;
+            effect.Initialize(start, end);
         }
     }
 

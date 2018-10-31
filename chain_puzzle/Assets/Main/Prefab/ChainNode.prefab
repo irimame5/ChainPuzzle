@@ -129,7 +129,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8
 --- !u!114 &114200391787323332
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +182,8 @@ MonoBehaviour:
   attackNodeAttributeEffect: {fileID: 1697958962518248, guid: dc637dc6e3576c94ca8181634194cf53,
     type: 2}
   nodeAttribute: 0
+  connectEffect: {fileID: 1411882205774376, guid: 3f58815b5aa04b24e9913bf4db755fee,
+    type: 2}
 --- !u!212 &212569238111119442
 SpriteRenderer:
   m_ObjectHideFlags: 1

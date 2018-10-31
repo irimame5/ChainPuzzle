@@ -8,6 +8,8 @@ public class ChainEdge : ConnectObject
     public bool IsPassed;
     [Disable]
     public List<GameObject> ConnectEffects = new List<GameObject>();
+    [Disable]
+    public GameObject ChainModel;
 
     [SerializeField]
     ChainNode[] connectedChainNodes = new ChainNode[2];
@@ -40,7 +42,8 @@ public class ChainEdge : ConnectObject
 
     public void RemoveEdge()
     {
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(ChainModel);
+        ChainModel = null;
     }
 
     private void OnDrawGizmos()

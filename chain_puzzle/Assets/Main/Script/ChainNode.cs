@@ -149,6 +149,7 @@ public class ChainNode : ConnectObject
         float connectingTime = MainGameSceneManager.Instance.GameParameter.ChainConnectTime;
         float timer = 0f;
         var chainObject = Instantiate(chain, chainEdge.transform);
+        chainEdge.ChainModel = chainObject;
 
         chainObject.transform.position = transform.position;
         var chainMaterial = chainObject.GetComponent<MeshRenderer>().material;

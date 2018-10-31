@@ -12,13 +12,14 @@ public class StageSelectSceneManager : MonoSingleton<StageSelectSceneManager>
     Transform stageButtons;
     [SerializeField]
     GameObject stageButtonPrefab;
-    [SerializeField]
+    [SerializeField,Tooltip("表示するステージ数,解放されていないステージも含む")]
     int maxStage = 8;
 
 	void Start ()
 	{
         SoundManager.Instance.PlayBgmSingle(bgm);
-        for(int i = 0; i < 8; i++)
+        GamePlayManager.Instance.ResetLoadStageNum();
+        for (int i = 0; i < maxStage; i++)
         {
             var button = Instantiate(stageButtonPrefab, stageButtons);
             var text = button.GetComponentInChildren<TextMeshProUGUI>();

@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114550182323374234}
   - component: {fileID: 114867921496128030}
   - component: {fileID: 114889727068583170}
+  - component: {fileID: 114707448899747750}
   m_Layer: 0
   m_Name: StageButton
   m_TagString: Untagged
@@ -74,6 +75,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114707448899747750
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680956294636000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8feadae66336747bc559037d366015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114721421197933122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,8 +308,8 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

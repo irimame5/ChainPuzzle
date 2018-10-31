@@ -8,14 +8,20 @@ using UnityEngine;
 /// </summary>
 public class GamePlayManager : MonoSingleton<GamePlayManager>
 {
-    [SerializeField, Disable]
+    [SerializeField, Disable,Tooltip("解放されているステージの数")]
     int openedStageNum = 1;
     public int OpenedStageNum
     {
         get { return openedStageNum; }
     }
+    [SerializeField, Disable,Tooltip("次回ロードするステージのナンバー,初期値は-1")]
+    public int loadStageNum = -1;
+    public int LoadStageNum
+    {
+        get { return loadStageNum; }
+    }
 
-	protected override void SubAwake ()
+    protected override void SubAwake ()
 	{
         DontDestroyOnLoad(gameObject);
     }
@@ -23,6 +29,11 @@ public class GamePlayManager : MonoSingleton<GamePlayManager>
     public void StageClear()
     {
         openedStageNum++;
+    }
+
+    public void ResetLoadStageNum()
+    {
+        loadStageNum = -1;
     }
 
 	void Update ()

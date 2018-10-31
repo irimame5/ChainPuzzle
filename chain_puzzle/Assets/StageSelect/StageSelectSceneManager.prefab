@@ -51,3 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b57b07181919e640b6333b8094ae225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgm: {fileID: 8300000, guid: 1253159fa96d17a4f93374b44da3c8e2, type: 3}
+  stageButtons: {fileID: 0}
+  stageButtonPrefab: {fileID: 1680956294636000, guid: 7f1ecc683df8ad247b3881c8a6f1aed1,
+    type: 2}

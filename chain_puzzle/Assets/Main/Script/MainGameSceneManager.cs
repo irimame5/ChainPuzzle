@@ -154,6 +154,7 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     void Clear()
     {
         gameClearUI.SetActive(true);
+        GamePlayManager.Instance.StageClear();
     }
 
     void Dead()

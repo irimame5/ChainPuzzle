@@ -8,10 +8,21 @@ using UnityEngine;
 /// </summary>
 public class GamePlayManager : MonoSingleton<GamePlayManager>
 {
+    [SerializeField, Disable]
+    int openedStageNum = 1;
+    public int OpenedStageNum
+    {
+        get { return openedStageNum; }
+    }
 
 	protected override void SubAwake ()
 	{
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void StageClear()
+    {
+        openedStageNum++;
     }
 
 	void Update ()

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 4561db822aa2e5c47934969906b9ef07
-timeCreated: 1541000081
+guid: 75e03b5f35b6f784c90e66dda48cbffe
+timeCreated: 1541003202
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -69,12 +69,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: lambert2
-    second: {fileID: 2100000, guid: ca9cd3796780e254299638f4224085b0, type: 2}
+    second: {fileID: 2100000, guid: a10eaec4ba0c4ba4b81325666b2f8929, type: 2}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Devil_Texture_Black
-    second: {fileID: 2800000, guid: 86fc1e4be61089a47b39dd293fa864bf, type: 3}
+    second: {fileID: 2800000, guid: 11e72653ea23a114ea4f7561a4c7fda6, type: 3}
   materials:
     importMaterials: 1
     materialName: 0
@@ -100,7 +100,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: devil_attack
+      takeName: devil_attack
+      firstFrame: 15
+      lastFrame: 16
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []

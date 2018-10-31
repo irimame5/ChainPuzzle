@@ -847,7 +847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4739605785613292, guid: fd213873765d1944da80be26fa0b8cf6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.6
       objectReference: {fileID: 0}
     - target: {fileID: 4739605785613292, guid: fd213873765d1944da80be26fa0b8cf6, type: 2}
       propertyPath: m_LocalPosition.z
@@ -873,14 +873,24 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 223162281754405898, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1027727752}
     - target: {fileID: 224292893848414878, guid: fd213873765d1944da80be26fa0b8cf6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0.47
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224292893848414878, guid: fd213873765d1944da80be26fa0b8cf6,
         type: 2}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95523777138704974, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1043,7 +1053,7 @@ RectTransform:
   - {fileID: 1418004681}
   - {fileID: 1507585645}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1559,7 +1569,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4777358931906858, guid: a7debcef0240121468185f0d4eda714b, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 212456899244033984, guid: a7debcef0240121468185f0d4eda714b,
         type: 2}

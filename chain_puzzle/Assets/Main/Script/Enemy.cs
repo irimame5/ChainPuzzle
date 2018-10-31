@@ -25,9 +25,12 @@ public class Enemy : MonoBehaviour
     {
         get { return hp <= 0; }
     }
+
+    Animator animator;
     Slider slider;
 	void Start ()
 	{
+        animator = GetComponentInChildren<Animator>();
         slider = GetComponentInChildren<Slider>();
         slider.maxValue = hp;
         slider.value = hp;
@@ -41,12 +44,12 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(Attack());
     }
-
     public IEnumerator Attack(System.Action onComplete = null)
     {
         const float AttackLag = 1;
         const float OnCompleteLag = 1;
 
+        animator.SetTrigger("Attack");
         yield return new WaitForSeconds(AttackLag);
         MainGameSceneManager.Instance.DamageToPlayer(attackPower);
         CameraEffects.Instance.PlayerDamage();
@@ -58,11 +61,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
-	public IEnumerator Damage(int value)
+    /// <summary>
+    /// 引数があるとContextMenuから呼べないので別関数にしている
+    /// </summary>
+    [ContextMenu("DamageTest")]
+    void DamageTest()
+    {
+        StartCoroutine(Damage(10));
+    }
+    public IEnumerator Damage(int value)
     {
         const float DamageLag = 0.3f;
         const float DamageTextLag = 0.2f;
 
+        animator.SetTrigger("Damage");
         yield return new WaitForSeconds(DamageLag);
         Instantiate(damageParticleEffect, transform.position, Quaternion.identity);
 

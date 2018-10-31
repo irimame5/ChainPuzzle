@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: 7fa88321ea703554d820b832478b6352
+timeCreated: 1541000087
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: body
+    100002: body_axis
+    100004: chest
+    100006: Devil
+    100008: //RootNode
+    100010: Devil_Wepon
+    100012: head
+    100014: ikHandle1
+    100016: ikHandle2
+    100018: ikHandle3
+    100020: ikHandle4
+    100022: L_arm1
+    100024: L_arm2
+    100026: L_arm3
+    100028: L_leg1
+    100030: L_leg2
+    100032: L_leg3
+    100034: neck
+    100036: R_arm1
+    100038: R_arm2
+    100040: R_arm3
+    100042: R_leg1
+    100044: R_leg2
+    100046: R_leg3
+    100048: waist
+    100050: Wepon
+    400000: body
+    400002: body_axis
+    400004: chest
+    400006: Devil
+    400008: //RootNode
+    400010: Devil_Wepon
+    400012: head
+    400014: ikHandle1
+    400016: ikHandle2
+    400018: ikHandle3
+    400020: ikHandle4
+    400022: L_arm1
+    400024: L_arm2
+    400026: L_arm3
+    400028: L_leg1
+    400030: L_leg2
+    400032: L_leg3
+    400034: neck
+    400036: R_arm1
+    400038: R_arm2
+    400040: R_arm3
+    400042: R_leg1
+    400044: R_leg2
+    400046: R_leg3
+    400048: waist
+    400050: Wepon
+    2100000: lambert2
+    4300000: Devil_Wepon
+    4300002: Devil
+    7400000: devil_stand
+    9500000: //RootNode
+    13700000: Devil
+    13700002: Devil_Wepon
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 84acda358e378cd488445d4f6aab1116, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Devil_Texture_Black
+    second: {fileID: 2800000, guid: 74ae94071ce8c834e8911374a171c244, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

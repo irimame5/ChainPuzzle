@@ -25,6 +25,7 @@ public class StageSelectSceneManager : MonoSingleton<StageSelectSceneManager>
             var text = button.GetComponentInChildren<TextMeshProUGUI>();
             int stageNum = i + 1;
             text.text = "Stage" + stageNum;
+            button.GetComponent<StageButton>().LoadStageNum = i + 1;
             if (GamePlayManager.Instance.OpenedStageNum <= i)
             {
                 button.GetComponent<Button>().interactable = false;

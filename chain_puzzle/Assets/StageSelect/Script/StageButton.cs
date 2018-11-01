@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class StageButton : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField,Disable,Tooltip("このボタンを押すとこのステージを読み込む")]
+    public int LoadStageNum = -1;
+
+	public void Pressed()
+    {
+        Debug.Assert(LoadStageNum != -1);
+        GamePlayManager.Instance.loadStageNum = LoadStageNum;
+    }
 }

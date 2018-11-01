@@ -9,6 +9,9 @@ using UnityEngine.UI;
 
 public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 {
+    [SerializeField, Disable, Tooltip("別シーンからEnemyが登録しに来る")]
+    public Enemy Enemy;
+
     [SerializeField]
     GameParameter gameParameter;
     public GameParameter GameParameter
@@ -18,19 +21,13 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     [SerializeField]
     GameObject gameClearUI;
     [SerializeField]
-    public Enemy enemy;
-    public Enemy Enemy
-    {
-        get { return enemy; }
-    }
+    GameObject gameOverUI;
     [SerializeField]
     AudioClip mainBgm;
     [SerializeField]
     int playerHp;
     [SerializeField]
     Slider hpBar;
-    [SerializeField]
-    GameObject damageTextEffect;
     [SerializeField]
     AudioClip damageSound;
     [SerializeField,SceneName]
@@ -40,11 +37,15 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     /// ロード中のシーケンスがなければ-1
     /// </summary>
     int sequanceIndex = -1;
-	void Start () {
+
+    void Start () {
         SoundManager.Instance.PlayBgmSingle(mainBgm);
         hpBar.maxValue = playerHp;
         hpBar.value = playerHp;
 
+        int loadStageNum = GamePlayManager.Instance.loadStageNum;
+        Debug.Assert(loadStageNum != -1);
+        SceneManager.LoadScene("Stage"+ loadStageNum, LoadSceneMode.Additive);
         LoadRandomSequance();
     }
 
@@ -113,7 +114,7 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
             Clear();
             yield break;
         }
-        yield return StartCoroutine(enemy.Attack());
+        yield return StartCoroutine(Enemy.Attack());
         yield return new WaitForSeconds(AttackedLag);
         LoadRandomSequance();
     }
@@ -122,7 +123,7 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     {
         yield return StartCoroutine(SequanceManager.Instance.NodeMaterialGlow());
 
-        yield return StartCoroutine(enemy.Damage(damage));
+        yield return StartCoroutine(Enemy.Damage(damage));
         StartCoroutine(EndSequance());
     }
 
@@ -135,14 +136,16 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
         {
             playerHp = 0;
             hpBar.value = 0;
+            UnLoadSequance();
             Dead();
+            return;
         }
         hpBar.value = playerHp;
     }
 
     bool ClearCheck()
     {
-        if (enemy.DeadFlag)
+        if (Enemy.DeadFlag)
         {
             return true;
         }else
@@ -159,6 +162,6 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 
     void Dead()
     {
-
+        gameOverUI.SetActive(true);
     }
 }

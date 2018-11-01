@@ -32,7 +32,11 @@ public class Enemy : MonoBehaviour
 
     Animator animator;
     Slider slider;
-	void Start ()
+    void Awake()
+    {
+        MainGameSceneManager.Instance.Enemy = this;
+    }
+    void Start ()
 	{
         animator = GetComponentInChildren<Animator>();
         slider = GetComponentInChildren<Slider>();

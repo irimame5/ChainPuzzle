@@ -950,6 +950,11 @@ Prefab:
       propertyPath: stageButtons
       value: 
       objectReference: {fileID: 1948866006}
+    - target: {fileID: 114124518500737102, guid: 6b40d604fc50b4a41a27c9fdbbafa3d6,
+        type: 2}
+      propertyPath: maxStage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6b40d604fc50b4a41a27c9fdbbafa3d6, type: 2}
   m_IsPrefabParent: 0

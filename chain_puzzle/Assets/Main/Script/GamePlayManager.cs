@@ -14,7 +14,7 @@ public class GamePlayManager : MonoSingleton<GamePlayManager>
     {
         get { return openedStageNum; }
     }
-    [SerializeField, Disable,Tooltip("次回ロードするステージのナンバー,初期値は-1")]
+    [SerializeField, Tooltip("次回ロードするステージのナンバー,初期値は-1")]
     public int loadStageNum = -1;
     public int LoadStageNum
     {

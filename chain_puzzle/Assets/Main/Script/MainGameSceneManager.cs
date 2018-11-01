@@ -104,7 +104,7 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 
     public IEnumerator EndSequance()
     {
-        const float AttackedLag = 0.8f;
+        const float AttackedLag = 1.5f;
 
         UnLoadSequance();
 

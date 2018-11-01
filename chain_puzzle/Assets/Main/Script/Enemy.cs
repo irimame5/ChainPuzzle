@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     int attackPower = 10;
     [SerializeField]
+    AudioClip damageSound;
+    [SerializeField]
+    AudioClip deadSound;
+    [SerializeField]
     int hp;
     public int Hp
     {
@@ -46,10 +50,10 @@ public class Enemy : MonoBehaviour
     }
     public IEnumerator Attack(System.Action onComplete = null)
     {
-        const float AttackLag = 1;
+        const float AttackLag = 0.8f;
         const float OnCompleteLag = 1;
 
-        animator.SetTrigger("Attack");
+        StartCoroutine(AttackAnimation());
         yield return new WaitForSeconds(AttackLag);
         MainGameSceneManager.Instance.DamageToPlayer(attackPower);
         CameraEffects.Instance.PlayerDamage();
@@ -59,6 +63,12 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(OnCompleteLag);
             onComplete.Invoke();
         }
+    }
+    IEnumerator AttackAnimation(float attackTime = 1)
+    {
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(attackTime);
+        animator.SetTrigger("Stand");
     }
 
     /// <summary>
@@ -74,28 +84,37 @@ public class Enemy : MonoBehaviour
         const float DamageLag = 0.3f;
         const float DamageTextLag = 0.2f;
 
-        animator.SetTrigger("Damage");
-        yield return new WaitForSeconds(DamageLag);
-        Instantiate(damageParticleEffect, transform.position, Quaternion.identity);
-
-        yield return new WaitForSeconds(DamageTextLag);
-        Instantiate(damageTextEffect)
-        .GetComponent<DamageTextEffect>()
-        .Initialize(transform.position, value);
-
         hp -= value;
         if (hp <= 0)
         {
             hp = 0;
             slider.value = 0;
             Dead();
+            yield break;
         }
+
+        StartCoroutine(DamageAnimation());
+        yield return new WaitForSeconds(DamageLag);
+        Instantiate(damageParticleEffect, transform.position, Quaternion.identity);
+        SoundManager.Instance.PlaySE(damageSound);
+
+        yield return new WaitForSeconds(DamageTextLag);
+        Instantiate(damageTextEffect)
+        .GetComponent<DamageTextEffect>()
+        .Initialize(transform.position, value);
+
         slider.value = hp;
+    }
+    IEnumerator DamageAnimation(float damageTime = 1)
+    {
+        animator.SetTrigger("Damage");
+        yield return new WaitForSeconds(damageTime);
+        animator.SetTrigger("Stand");
     }
 
     void Dead()
     {
-        GetComponentInChildren<MeshRenderer>().enabled = false;
-        GetComponentsInChildren<Canvas>().Select(x => x.enabled = false);
+        animator.SetTrigger("Dead");
+        SoundManager.Instance.PlaySE(deadSound);
     }
 }

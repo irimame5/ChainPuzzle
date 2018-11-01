@@ -27,7 +27,7 @@ public class SoundManager : MonoSingleton<SoundManager> {
         {
             print(typeof(SoundManager) + "was instantiated");
             Instance.QuaterNoteEvent = null;
-            Instance.QuaterNoteEvent = QuaterNoteEvent;//wip個々の受け渡しがうまくいかない
+            Instance.QuaterNoteEvent = QuaterNoteEvent;
             Destroy(gameObject);
             return;
         }

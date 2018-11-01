@@ -274,7 +274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 72}
+  m_AnchoredPosition: {x: 0, y: 245}
   m_SizeDelta: {x: 685, y: 143.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &265927343
@@ -881,18 +881,18 @@ Prefab:
     - target: {fileID: 224292893848414878, guid: fd213873765d1944da80be26fa0b8cf6,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.47
       objectReference: {fileID: 0}
     - target: {fileID: 224292893848414878, guid: fd213873765d1944da80be26fa0b8cf6,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 95523777138704974, guid: fd213873765d1944da80be26fa0b8cf6,
-        type: 2}
-      propertyPath: m_ApplyRootMotion
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114347151451153160, guid: fd213873765d1944da80be26fa0b8cf6,
+        type: 2}
+      propertyPath: deadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2afa3de1fe8cff749a1cf8f33b19bb29, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fd213873765d1944da80be26fa0b8cf6, type: 2}
   m_IsPrefabParent: 0
@@ -1955,7 +1955,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00017948225, y: -84.024254}
+  m_AnchoredPosition: {x: 0.00017948225, y: 89}
   m_SizeDelta: {x: 103.13, y: 19.23}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2028077869

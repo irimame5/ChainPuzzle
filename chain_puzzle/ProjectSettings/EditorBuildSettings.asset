@@ -32,3 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scene/MainGame/Sequance/Stage1Seq3.unity
     guid: c987a13235bb9324ca3fd27437d19a48
+  - enabled: 1
+    path: Assets/Scene/MainGame/Sequance/Stage1Seq4.unity
+    guid: 5958ad31474d8184fa20e698f475b145

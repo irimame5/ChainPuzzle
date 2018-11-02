@@ -32,17 +32,14 @@ public class Enemy : MonoBehaviour
 
     Animator animator;
     Slider slider;
-    void Awake()
-    {
-        MainGameSceneManager.Instance.Enemy = this;
-    }
     void Start ()
 	{
         animator = GetComponentInChildren<Animator>();
         slider = GetComponentInChildren<Slider>();
         slider.maxValue = hp;
         slider.value = hp;
-	}
+        MainGameSceneManager.Instance.Enemy = this;
+    }
 
     /// <summary>
     /// 引数があるとContextMenuから呼べないので別関数にしている

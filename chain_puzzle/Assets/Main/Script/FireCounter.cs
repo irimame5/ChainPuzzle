@@ -36,6 +36,7 @@ public class FireCounter : MonoSingleton<FireCounter> {
     public void RemoveFire()
     {
         if (count == 0) { return; }
+        if(fireImages.Length<=count - 1) { return; }
         fireImages[count-1].enabled = false;
         count--;
     }

@@ -23,8 +23,6 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     [SerializeField]
     GameObject gameOverUI;
     [SerializeField]
-    AudioClip mainBgm;
-    [SerializeField]
     int playerHp;
     [SerializeField]
     Slider hpBar;
@@ -39,7 +37,6 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     int sequanceIndex = -1;
 
     void Start () {
-        SoundManager.Instance.PlayBgmSingle(mainBgm);
         hpBar.maxValue = playerHp;
         hpBar.value = playerHp;
 

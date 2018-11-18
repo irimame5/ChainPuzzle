@@ -115,7 +115,7 @@ public class SequanceManager : MonoSingleton<SequanceManager>
     /// <returns>行き止まりならtrue</returns>
     public bool CheckDeadEndNode(ChainNode node)
     {
-        foreach (var edge in node.ConnectedChainEdge)
+        foreach (var edge in node.ConnectedChainEdges)
         {
             if (!CheckEdgePass(edge))
             {

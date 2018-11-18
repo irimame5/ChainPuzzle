@@ -21,7 +21,7 @@ public class ChainNode : ConnectObject
     GameObject ringEffect;
     [SerializeField]
     ChainEdge[] connectedChainEdges;
-    public ChainEdge[] ConnectedChainEdge
+    public ChainEdge[] ConnectedChainEdges
     {
         get { return connectedChainEdges; }
     }
@@ -46,6 +46,11 @@ public class ChainNode : ConnectObject
     public ChainNodeAttribute NodeAttribute
     {
         get { return nodeAttribute; }
+    }
+
+    public void SetChainEdge(ChainEdge[] edge)
+    {
+        connectedChainEdges = edge;
     }
 
     void Start () {
@@ -74,8 +79,10 @@ public class ChainNode : ConnectObject
     private void OnDrawGizmos()
     {
         const float connectShirtLength = 0.2f;
-        foreach(var node in connectedChainEdges)
+
+        foreach (var node in connectedChainEdges)
         {
+            if (node == null) { continue; }
             var direction = node.transform.position - transform.position;
             var orthogonalVector = Vector3.Cross(direction,transform.forward);
             orthogonalVector.Normalize();
@@ -125,6 +132,7 @@ public class ChainNode : ConnectObject
     {
         foreach(var connectEdge in connectedChainEdges)
         {
+            if (connectEdge == null) { continue; }
             var connectingNode = connectEdge.GetConnectedOtherNode(connectNode);
             if (connectingNode!=null)
             {

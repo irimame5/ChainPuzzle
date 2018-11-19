@@ -320,7 +320,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &115415153 stripped
@@ -466,7 +467,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &185438707 stripped
@@ -756,7 +758,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &452247945 stripped
@@ -837,7 +840,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &525551442 stripped
@@ -918,7 +922,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &904789919 stripped
@@ -999,7 +1004,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &964929874 stripped
@@ -1080,7 +1086,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &986738839 stripped
@@ -1161,7 +1168,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1070469647 stripped
@@ -1694,7 +1702,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1599724316 stripped
@@ -2229,7 +2238,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2103159413 stripped

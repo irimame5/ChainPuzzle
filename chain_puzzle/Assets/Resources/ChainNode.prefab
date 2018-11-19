@@ -184,6 +184,7 @@ MonoBehaviour:
   nodeAttribute: 0
   connectEffectPrefab: {fileID: 1411882205774376, guid: 3f58815b5aa04b24e9913bf4db755fee,
     type: 2}
+  attributeEffects: []
 --- !u!212 &212569238111119442
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -309,7 +309,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &115415153 stripped
@@ -335,6 +336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPassed: 0
   ConnectEffects: []
+  ChainModel: {fileID: 0}
   connectedChainNodes:
   - {fileID: 356740637}
   - {fileID: 34024683}
@@ -454,7 +456,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &185438707 stripped
@@ -480,6 +483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPassed: 0
   ConnectEffects: []
+  ChainModel: {fileID: 0}
   connectedChainNodes:
   - {fileID: 1957933151}
   - {fileID: 1120651562}
@@ -743,7 +747,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &452247945 stripped
@@ -769,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPassed: 0
   ConnectEffects: []
+  ChainModel: {fileID: 0}
   connectedChainNodes:
   - {fileID: 1120651562}
   - {fileID: 1444240795}
@@ -823,7 +829,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &904789919 stripped
@@ -849,6 +856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPassed: 0
   ConnectEffects: []
+  ChainModel: {fileID: 0}
   connectedChainNodes:
   - {fileID: 1957933151}
   - {fileID: 1444240795}
@@ -903,7 +911,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1070469647 stripped
@@ -929,6 +938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPassed: 0
   ConnectEffects: []
+  ChainModel: {fileID: 0}
   connectedChainNodes:
   - {fileID: 356740637}
   - {fileID: 1444240795}
@@ -1608,7 +1618,8 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114820349026898576, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fbc3b29fe8196104bb63a6453d86b1fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2103159413 stripped
@@ -1634,6 +1645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsPassed: 0
   ConnectEffects: []
+  ChainModel: {fileID: 0}
   connectedChainNodes:
   - {fileID: 34024683}
   - {fileID: 1444240795}

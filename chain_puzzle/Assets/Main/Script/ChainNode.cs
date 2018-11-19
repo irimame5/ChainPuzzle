@@ -20,8 +20,8 @@ public class ChainNode : ConnectObject
     [SerializeField]
     GameObject ringEffect;
     [SerializeField]
-    ChainEdge[] connectedChainEdges;
-    public ChainEdge[] ConnectedChainEdges
+    List<ChainEdge> connectedChainEdges;
+    public List<ChainEdge> ConnectedChainEdges
     {
         get { return connectedChainEdges; }
     }
@@ -48,7 +48,7 @@ public class ChainNode : ConnectObject
         get { return nodeAttribute; }
     }
 
-    public void SetChainEdge(ChainEdge[] edge)
+    public void SetChainEdge(List<ChainEdge> edge)
     {
         connectedChainEdges = edge;
     }
@@ -80,6 +80,7 @@ public class ChainNode : ConnectObject
     {
         const float connectShirtLength = 0.2f;
 
+        if (connectedChainEdges == null) { return; }
         foreach (var node in connectedChainEdges)
         {
             if (node == null) { continue; }

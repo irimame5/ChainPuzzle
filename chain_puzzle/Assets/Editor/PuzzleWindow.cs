@@ -37,6 +37,18 @@ public class PuzzleWindow : EditorWindow
         {
             DisConnectNode();
         }
+
+        GUI.color = Color.red;
+        if (GUILayout.Button("緊急脱出ボタン\n(注意:緊急時以外は押さないでください)"))
+        {
+            if (Random.Range(0, 2) == 0)
+            {
+                Debug.LogError("脱出失敗");
+            }else
+            {
+                EditorApplication.Exit(0);
+            }
+        }
     }
 
     static void UpdateButtonPress()//wip

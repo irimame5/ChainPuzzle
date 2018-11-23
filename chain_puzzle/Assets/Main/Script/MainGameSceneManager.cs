@@ -9,6 +9,8 @@ using UnityEngine.UI;
 
 public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
 {
+    EditorPlayData data;
+
     [SerializeField, Disable, Tooltip("別シーンからEnemyが登録しに来る")]
     public Enemy Enemy;
 
@@ -37,6 +39,8 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     int sequanceIndex = -1;
 
     void Start () {
+        data = Resources.Load<EditorPlayData>("EditorPlayData");
+
         hpBar.maxValue = playerHp;
         hpBar.value = playerHp;
 
@@ -78,14 +82,32 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
     //}
     public void LoadRandomSequance()
     {
+
         if (sequanceIndex == -1)
         {
-            sequanceIndex = UnityEngine.Random.Range(0, sequances.Length);
+            if (!data.IsInvalidDebugLoad())
+            {
+                sequanceIndex = UnityEngine.Random.Range(0, sequances.Length);
+            }
+            else
+            {
+                sequanceIndex = 9999;//-1かどうか調べるために使う
+                SceneManager.LoadScene(data.DebugLoadSequanceName, LoadSceneMode.Additive);
+                return;
+            }
         }
         else
         {
-            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);//UnLoadSceneにしたいけど,Asyncを使えって言われた
-            sequanceIndex = UnityEngine.Random.Range(0,sequances.Length);
+            if (!data.IsInvalidDebugLoad())
+            {
+                SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);//UnLoadSceneにしたいけど,Asyncを使えって言われた
+                sequanceIndex = UnityEngine.Random.Range(0, sequances.Length);
+            }
+            else
+            {
+                SceneManager.UnloadSceneAsync(data.DebugLoadSequanceName);//UnLoadSceneにしたいけど,Asyncを使えって言われた
+                SceneManager.LoadScene(data.DebugLoadSequanceName, LoadSceneMode.Additive);
+            }
         }
         SceneManager.LoadScene(sequances[sequanceIndex], LoadSceneMode.Additive);
     }
@@ -96,8 +118,16 @@ public class MainGameSceneManager : MonoSingleton<MainGameSceneManager>
             Debug.LogWarning("LoadされていないのにSequanceのunLoadが呼び出されました");
             return;
         }
-        SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);//UnLoadSceneにしたいけど,Asyncを使えって言われた
-        sequanceIndex = -1;
+        if (!data.IsInvalidDebugLoad())
+        {
+            SceneManager.UnloadSceneAsync(sequances[sequanceIndex]);//UnLoadSceneにしたいけど,Asyncを使えって言われた
+            sequanceIndex = -1;
+        }else
+        {
+            SceneManager.UnloadSceneAsync(data.DebugLoadSequanceName);//UnLoadSceneにしたいけど,Asyncを使えって言われた
+            sequanceIndex = -1;
+        }
+        
     }
 
     public IEnumerator EndSequance()

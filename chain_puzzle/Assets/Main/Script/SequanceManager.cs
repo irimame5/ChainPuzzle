@@ -35,17 +35,24 @@ public class SequanceManager : MonoSingleton<SequanceManager>
     /// 配列の長さをへっこうしてから実行しないと値が保存されないらしい
     /// </summary>
     [ContextMenu("SerchAllEdge")]
-    void SerchAllEdge()
+    public void SerchAllEdge()
     {
         chainEdges = null;
         chainEdges = FindObjectsOfType<ChainEdge>();
+        foreach (var edge in chainEdges)
+        {
+            UnityEditor.EditorUtility.SetDirty(edge);
+        }
     }
     [ContextMenu("SerchAllNode")]
-    void SerchAllNodeRenderer()
+    public void SerchAllNode()
     {
         chainNodes = null;
         chainNodes = FindObjectsOfType<ChainNode>();
-
+        foreach(var node in chainNodes)
+        {
+            UnityEditor.EditorUtility.SetDirty(node);
+        }
     }
 #endif
 

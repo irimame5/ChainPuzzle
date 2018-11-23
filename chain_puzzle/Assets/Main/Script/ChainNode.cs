@@ -11,6 +11,23 @@ public enum ChainNodeAttribute
     Guard = 1 << 2,
     Recovery = 1 << 3,
 }
+public static partial class ChainNodeAttributeExtension
+{
+    /// <summary>
+    /// aにbが含まれていればtrue
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    public static bool HasFlag(this ChainNodeAttribute a, ChainNodeAttribute b)
+    {
+        if ((a & b) == b)
+        {
+            return true;
+        }
+        return false;
+    }
+}
 
 public class ChainNode : ConnectObject
 {
@@ -46,6 +63,7 @@ public class ChainNode : ConnectObject
     public ChainNodeAttribute NodeAttribute
     {
         get { return nodeAttribute; }
+        set { nodeAttribute = value; }
     }
 
     public void SetChainEdge(List<ChainEdge> edge)
@@ -57,7 +75,8 @@ public class ChainNode : ConnectObject
         if (nodeAttribute == ChainNodeAttribute.Attack)
         {
             var effect = Instantiate(attackNodeAttributeEffect, transform);
-            effect.transform.SetLocalZ(0.5f);
+            effect.transform.Rotate(Vector3.up * 90);
+            effect.transform.SetZ(0.5f);
             attributeEffects.Add(effect);
         }
         InstantiateConnectEffects();

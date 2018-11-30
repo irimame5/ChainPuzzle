@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - 
   - 
   - Invisible
-  - 
-  - 
-  - 
+  - Enemy
+  - ChainNode
+  - Chain
   - 
   - 
   - 
@@ -38,6 +39,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackGround
+    uniqueID: 1446142215
+    locked: 0
+  - name: Chain
+    uniqueID: 2843669889
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ancar
+    uniqueID: 1231627895
     locked: 0

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ChainEdge : ConnectObject
 {
-
+    [Disable]
     public bool IsPassed;
+    [Disable]
+    public List<GameObject> ConnectEffects = new List<GameObject>();
+    [Disable]
+    public GameObject ChainModel;
+
     [SerializeField]
     ChainNode[] connectedChainNodes = new ChainNode[2];
     public ChainNode[] ConnectedChainNodes
@@ -13,7 +18,13 @@ public class ChainEdge : ConnectObject
         get { return connectedChainNodes; }
     }
 
-	void Start () {
+    public void SetChainNode(ChainNode[] edge)
+    {
+        Debug.Assert(edge.Length == 2);
+        connectedChainNodes = edge;
+    }
+
+    void Start () {
         Debug.Assert(connectedChainNodes.Length == 2);
 	}
 
@@ -37,7 +48,8 @@ public class ChainEdge : ConnectObject
 
     public void RemoveEdge()
     {
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(ChainModel);
+        ChainModel = null;
     }
 
     private void OnDrawGizmos()
@@ -45,12 +57,13 @@ public class ChainEdge : ConnectObject
         const float connectShirtLength = 0.2f;
         foreach (var node in ConnectedChainNodes)
         {
+            if (node == null) { continue; }
             var direction = node.transform.position - transform.position;
             var orthogonalVector = Vector3.Cross(direction, transform.forward);
             orthogonalVector.Normalize();
             orthogonalVector *= connectShirtLength;
             Gizmos.color = Color.black;
-            ExtendMethods.DrawAllow(transform.position + orthogonalVector, direction);
+            EditorExtension.DrawAllow(transform.position + orthogonalVector, direction);
         }
     }
 
